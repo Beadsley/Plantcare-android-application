@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlantInfoActivity"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/btn_main_menu"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/btn_go_back"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:onClick="onGoBack"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <fragment
+            android:id="@+id/fragment"
+            android:name="com.example.myplants.PlantsFragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            tools:layout="@layout/fragment_plants"/>
+
+        <fragment
+            android:id="@+id/fragment2"
+            android:name="com.example.myplants.PlantDescriptionsFragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            tools:layout="@layout/fragment_plant_descriptions"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

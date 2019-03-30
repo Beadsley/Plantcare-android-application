@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="plants">
+        <item> Aloe Vera</item>
+        <item>English Ivy</item>
+        <item>Spider Plant</item>
+        <item>Snake Plant</item>
+        <item>Calathea</item>
+        <item>Palm Tree</item>
+        <item>Chinese money plant</item>
+        <item>Ficus</item>
+        <item>Calamondin Orange Tree</item>
+        <item>Jade Plant</item>
+        <item>Pilea Glaucophylla</item>
+        <item>Guzmania</item>
+    </string-array>
+
+    <string-array name="plantDescriptions">
+        <item>Light requirements: Indirect or direct sunlight. Watering schedule: Allow soil to dry between watering</item>
+        <item>Light requirements: best in bright, indirect light. But can grow anywhere. Watering schedule: Allow soil to dry between watering.</item>
+        <item>Light requirements: Spider plants prefer bright light for maximum growth but will still flourish in indirect and fairly low amounts of light. Watering schedule: Regularly, but not so much water so that the soil it soggy (the roots can rot this way).</item>
+        <item>Light requirements: Indirect or bright sunlight.Watering schedule: Water rarely and make sure the dirt has fully dried between waterings.</item>
+        <item>Light requirements: Bright, indirect light. Watering schedule: Keep the soil moist but not soggy, and be careful of the water you use — sometimes hard or fluoridated water can cause the leaves to turn brown. Use distilled, spring, or rain water when possible.</item>
+        <item>Light requirements: Bright indirect light to bright shade. Watering schedule: Water really well in the growing season little over winter. never allow the pot to stand in water.</item>
+        <item>Light requirements: Bright, indirect sunlight. Rotate to obtain symmetry. Watering schedule: Once a week.</item>
+        <item>Fiscus </item>
+        <item>Calamondin Orange Tree</item>
+        <item>Jade Plant</item>
+        <item>Pilea Glaucophylla</item>
+        <item>Guzmania</item>
+    </string-array>
+
+</resources>

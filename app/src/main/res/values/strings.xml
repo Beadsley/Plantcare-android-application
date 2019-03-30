@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Plants</string>
+    <string name="welcome_txt">Welcome to My Plants Application</string>
+    <string name="plant_information_btn">Plant Information</string>
+    <string name="btn_go_back">Go Back</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
