@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="plants">
-        <item> Aloe Vera</item>
+        <item>Aloe Vera</item>
         <item>English Ivy</item>
         <item>Spider Plant</item>
         <item>Snake Plant</item>
@@ -44,5 +44,20 @@
         <item>Water it well, making sure to moisten the entire root ball, then repeat when the soil is dry to the touch.</item>
         <item>Water when the potting soil is dry to the touch and in the cup of the plant.</item>
     </string-array>
+
+    <array name="plantimages">
+        <item>@drawable/plant1</item>
+        <item>@drawable/plant2</item>
+        <item>@drawable/plant3</item>
+        <item>@drawable/plant4</item>
+        <item>@drawable/plant5</item>
+        <item>@drawable/plant6</item>
+        <item>@drawable/plant7</item>
+        <item>@drawable/plant8</item>
+        <item>@drawable/plant9</item>
+        <item>@drawable/plant10</item>
+        <item>@drawable/plant11</item>
+        <item>@drawable/plant12</item>
+    </array>
 
 </resources>
