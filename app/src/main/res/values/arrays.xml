@@ -15,19 +15,34 @@
         <item>Guzmania</item>
     </string-array>
 
-    <string-array name="plantDescriptions">
-        <item>Light requirements: Indirect or direct sunlight. Watering schedule: Allow soil to dry between watering</item>
-        <item>Light requirements: best in bright, indirect light. But can grow anywhere. Watering schedule: Allow soil to dry between watering.</item>
-        <item>Light requirements: Spider plants prefer bright light for maximum growth but will still flourish in indirect and fairly low amounts of light. Watering schedule: Regularly, but not so much water so that the soil it soggy (the roots can rot this way).</item>
-        <item>Light requirements: Indirect or bright sunlight.Watering schedule: Water rarely and make sure the dirt has fully dried between waterings.</item>
-        <item>Light requirements: Bright, indirect light. Watering schedule: Keep the soil moist but not soggy, and be careful of the water you use — sometimes hard or fluoridated water can cause the leaves to turn brown. Use distilled, spring, or rain water when possible.</item>
-        <item>Light requirements: Bright indirect light to bright shade. Watering schedule: Water really well in the growing season little over winter. never allow the pot to stand in water.</item>
-        <item>Light requirements: Bright, indirect sunlight. Rotate to obtain symmetry. Watering schedule: Once a week.</item>
-        <item>Fiscus </item>
-        <item>Calamondin Orange Tree</item>
-        <item>Jade Plant</item>
-        <item>Pilea Glaucophylla</item>
-        <item>Guzmania</item>
+    <string-array name="lightRequirements">
+        <item>Indirect or direct sunlight.</item>
+        <item>flourishes in bright, indirect light. But can grow anywhere.</item>
+        <item>Spider plants prefer bright light for maximum growth but will still flourish in indirect and fairly low amounts of light.</item>
+        <item>Indirect or bright sunlight. </item>
+        <item>Bright, indirect light. </item>
+        <item>Bright indirect light to bright shade.</item>
+        <item>Bright, indirect sunlight. Rotate to obtain symmetry.</item>
+        <item>Indirect sunlight</item>
+        <item>direct sunlight. More sun the better</item>
+        <item>Direct Sunlight</item>
+        <item>Best in medium light, though it can be acclimatized to full sun.</item>
+        <item>Bright, natural light. Avoid exposure to any direct, hot sun</item>
+    </string-array>
+
+    <string-array name="waterRequirements">
+        <item>Allow soil to dry between watering</item>
+        <item>Allow soil to dry between watering</item>
+        <item>Regularly, but not so much water so that the soil it soggy (the roots can rot this way).</item>
+        <item>Water rarely and make sure the dirt has fully dried between waterings</item>
+        <item>Keep the soil moist but not soggy, and be careful of the water you use — sometimes hard or fluoridated water can cause the leaves to turn brown. Use distilled, spring, or rain water when possible.</item>
+        <item>Water really well in the growing season little over winter. never allow the pot to stand in water.</item>
+        <item>Once a week.</item>
+        <item>water when the plants soil is dry a few inches down.</item>
+        <item>Water thoroughly, allowing the surface of the soil to dry between waterings.</item>
+        <item>Allow soil to dry between waterings.</item>
+        <item>Water it well, making sure to moisten the entire root ball, then repeat when the soil is dry to the touch.</item>
+        <item>Water when the potting soil is dry to the touch and in the cup of the plant.</item>
     </string-array>
 
 </resources>
