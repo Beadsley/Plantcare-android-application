@@ -17,6 +17,7 @@ public class PlantInfoActivity extends AppCompatActivity implements PlantNamesFr
     TextView lightRequirement_txt;
     TextView waterRequirement_txt;
     TextView funFacts_txt;
+    TextView hint_txt;
     ImageView plantImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class PlantInfoActivity extends AppCompatActivity implements PlantNamesFr
         lightRequirement_txt=findViewById(R.id.light_requirements_txt);
         waterRequirement_txt=findViewById(R.id.water_requirements_txt);
         funFacts_txt=findViewById(R.id.fun_facts_txt);
+        hint_txt=findViewById(R.id.plant_info_hint_txt);
 
         plantImage=findViewById(R.id.plant_image);
 
@@ -56,6 +58,8 @@ public class PlantInfoActivity extends AppCompatActivity implements PlantNamesFr
         funFacts_txt.setText("Fun Fact");
         String [] funFacts =getResources().getStringArray(R.array.funFacts);
         funFactsDetails.setText(funFacts[index]);
+
+        hint_txt.setText("");
 
         Drawable d=getResources().obtainTypedArray(R.array.plantimages).getDrawable(index);
         plantImage.setImageDrawable(d);
