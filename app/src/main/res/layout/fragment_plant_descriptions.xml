@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".PlantDescriptionsFragment"
     android:orientation="vertical">
+
     <TextView
         android:id="@+id/light_requirements_txt"
         android:layout_width="match_parent"
@@ -48,5 +49,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:textStyle="bold" />
+    <TextView
+        android:id="@+id/plant_info_hint_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18dp"
+        android:gravity="center"
+        android:text="@string/plant_info_hint_txt"/>
 
 </LinearLayout>
