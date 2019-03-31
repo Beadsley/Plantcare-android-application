@@ -13,14 +13,24 @@ public class PlantInfoActivity extends AppCompatActivity implements PlantNamesFr
     private static final String TAG= "PlantInfo";
     TextView lightRequirementDetails;
     TextView waterRequirementDetails;
+    TextView funFactsDetails;
+    TextView lightRequirement_txt;
+    TextView waterRequirement_txt;
+    TextView funFacts_txt;
     ImageView plantImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_info);
-        //Log.v(TAG, "Plant Info Initialised");
+
         lightRequirementDetails=findViewById(R.id.light_requirements);
         waterRequirementDetails=findViewById(R.id.water_requirements);
+        funFactsDetails=findViewById(R.id.fun_fact);
+
+        lightRequirement_txt=findViewById(R.id.light_requirements_txt);
+        waterRequirement_txt=findViewById(R.id.water_requirements_txt);
+        funFacts_txt=findViewById(R.id.fun_facts_txt);
+
         plantImage=findViewById(R.id.plant_image);
 
     }
@@ -34,20 +44,25 @@ public class PlantInfoActivity extends AppCompatActivity implements PlantNamesFr
     // method sets a description to the 'plantDetails Textview' when a plant is selected
     @Override
     public void onPlantSelected(int index) {
-        //Log.v(TAG,"selcted index: "+index);
+
+        lightRequirement_txt.setText("Light Requirements");
         String [] lightRequirements= getResources().getStringArray(R.array.lightRequirements);
         lightRequirementDetails.setText(lightRequirements[index]);
+
+        waterRequirement_txt.setText("Water Requirements");
         String [] waterRequirements= getResources().getStringArray(R.array.waterRequirements);
         waterRequirementDetails.setText(waterRequirements[index]);
 
+        funFacts_txt.setText("Fun Fact");
+        String [] funFacts =getResources().getStringArray(R.array.funFacts);
+        funFactsDetails.setText(funFacts[index]);
 
-         Drawable d=getResources().obtainTypedArray(R.array.plantimages).getDrawable(index);
-
-        //int[] plantimages2=getResources().getIntArray(R.array.plantimages);
-        //String [] plantimages=getResources().getStringArray(R.array.plantimages);
-        Log.v(TAG,d+"    yhyhyh");
+        Drawable d=getResources().obtainTypedArray(R.array.plantimages).getDrawable(index);
         plantImage.setImageDrawable(d);
-        //plantImage.setImageDrawable(getResources().getDrawable(R.drawable.plant1));
-        //plantImage.setImageDrawable(getResources().getDrawable(R.drawable.plantimages2[index]));
+
+
+
+
+
     }
 }

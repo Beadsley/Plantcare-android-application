@@ -35,7 +35,7 @@
         <item>Allow soil to dry between watering</item>
         <item>Regularly, but not so much water so that the soil it soggy (the roots can rot this way).</item>
         <item>Water rarely and make sure the dirt has fully dried between waterings</item>
-        <item>Keep the soil moist but not soggy, and be careful of the water you use — sometimes hard or fluoridated water can cause the leaves to turn brown. Use distilled, spring, or rain water when possible.</item>
+        <item>Keep the soil moist but not soggy. Use distilled, spring, or rain water when possible.</item>
         <item>Water really well in the growing season little over winter. never allow the pot to stand in water.</item>
         <item>Once a week.</item>
         <item>water when the plants soil is dry a few inches down.</item>
@@ -43,6 +43,20 @@
         <item>Allow soil to dry between waterings.</item>
         <item>Water it well, making sure to moisten the entire root ball, then repeat when the soil is dry to the touch.</item>
         <item>Water when the potting soil is dry to the touch and in the cup of the plant.</item>
+    </string-array>
+    <string-array name="funFacts">
+        <item>One of aloe’s most famous uses is to soothe sunburnt skin, and it can be also used for cold sores.</item>
+        <item>There are 12-15 species of ivy.</item>
+        <item>Spider plants also go by the names “airplane plant,” “ribbon plant,” and “spider ivy.”</item>
+        <item>Snake plants are effective at cleaning the air, removing toxins such as formaldehyde.</item>
+        <item>On some varieties of Calathea it looks like there are eyes on the leaves, just like peacock feathers. That is why Calathea is also referred to as the Peacock Plant.</item>
+        <item>Over 2500 species of palm trees exist today.</item>
+        <item>Place a coin in the soil with your Chinese money plant, and it’ll spontaneously start to attract wealth.</item>
+        <item>The name of the plant originated from Latin “Ficus” that stands for “fig.”</item>
+        <item>Calamondin oranges are a dwarf citrus variety.</item>
+        <item>Tortoises like to eat leaves of the jade plant. </item>
+        <item>The gray artillery plant is without a formal botanical name</item>
+        <item>Guzmania dies after it has produced its flowers in summer but new plants can easily be propagated from the offsets which appear as the parent plant dies.</item>
     </string-array>
 
     <array name="plantimages">
