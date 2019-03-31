@@ -5,18 +5,68 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical">
+
     <Button
         android:id="@+id/btn_plant_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
         android:background="@color/colorPrimary"
-        android:hint="@string/plant_information_btn"
-        android:textStyle="bold"
-        android:textColorHint="#FFFFFF"
-        android:onClick="onPlantInfo"
+        android:drawableLeft="@drawable/icon_arrow"
+        android:drawablePadding="20dp"
+        android:drawableRight="@drawable/icon_flower"
+        android:text="@string/btn_plant_info_text"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:typeface="sans"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:onClick="onPlantInfo"/>
+    <Button
+        android:id="@+id/btn_favourites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorPrimary"
+        android:drawableLeft="@drawable/icon_arrow"
+        android:drawablePadding="20dp"
+        android:drawableRight="@drawable/icon_favourite"
+        android:text="@string/btn_favourite_text"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:typeface="sans"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:onClick="onPlantInfo"/>
+    <Button
+        android:id="@+id/btn_funfacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorPrimary"
+        android:drawableLeft="@drawable/icon_arrow"
+        android:drawablePadding="20dp"
+        android:drawableRight="@drawable/icon_happy_face"
+        android:text="@string/btn_funfacts_text"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:typeface="sans"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:onClick="onPlantInfo"/>
 
-        />
-
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitEnd"
+        android:src="@drawable/image_logo" />
 </LinearLayout>
