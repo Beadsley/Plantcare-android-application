@@ -11,7 +11,7 @@
         <item>Ficus</item>
         <item>Calamondin Orange Tree</item>
         <item>Jade Plant</item>
-        <item>Pilea Glaucophylla</item>
+        <item>Alocasia Zebrina</item>
         <item>Guzmania</item>
     </string-array>
 
@@ -26,7 +26,7 @@
         <item>Indirect sunlight</item>
         <item>direct sunlight. More sun the better</item>
         <item>Direct Sunlight</item>
-        <item>Best in medium light, though it can be acclimatized to full sun.</item>
+        <item>Bright-light spot with indirect sunlight.</item>
         <item>Bright, natural light. Avoid exposure to any direct, hot sun</item>
     </string-array>
 
@@ -41,7 +41,7 @@
         <item>water when the plants soil is dry a few inches down.</item>
         <item>Water thoroughly, allowing the surface of the soil to dry between waterings.</item>
         <item>Allow soil to dry between waterings.</item>
-        <item>Water it well, making sure to moisten the entire root ball, then repeat when the soil is dry to the touch.</item>
+        <item>Water about twice per week in the spring and reduce to about once per week in the winter</item>
         <item>Water when the potting soil is dry to the touch and in the cup of the plant.</item>
     </string-array>
     <string-array name="funFacts">
@@ -55,23 +55,23 @@
         <item>The name of the plant originated from Latin “Ficus” that stands for “fig.”</item>
         <item>Calamondin oranges are a dwarf citrus variety.</item>
         <item>Tortoises like to eat leaves of the jade plant. </item>
-        <item>The gray artillery plant is without a formal botanical name</item>
+        <item>The plant is also known as Elephant\'s Ear. </item>
         <item>Guzmania dies after it has produced its flowers in summer but new plants can easily be propagated from the offsets which appear as the parent plant dies.</item>
     </string-array>
 
     <array name="plantimages">
-        <item>@drawable/plant1</item>
-        <item>@drawable/plant2</item>
-        <item>@drawable/plant3</item>
-        <item>@drawable/plant4</item>
-        <item>@drawable/plant5</item>
-        <item>@drawable/plant6</item>
-        <item>@drawable/plant7</item>
-        <item>@drawable/plant8</item>
-        <item>@drawable/plant9</item>
-        <item>@drawable/plant10</item>
-        <item>@drawable/plant11</item>
-        <item>@drawable/plant12</item>
+        <item>@drawable/image_alow_vera</item>
+        <item>@drawable/image_englishivy</item>
+        <item>@drawable/image_spider_plant</item>
+        <item>@drawable/image_snake_plant</item>
+        <item>@drawable/image_calathea</item>
+        <item>@drawable/image_palm</item>
+        <item>@drawable/image_pilea</item>
+        <item>@drawable/image_ficus</item>
+        <item>@drawable/image_calamondin</item>
+        <item>@drawable/image_jade</item>
+        <item>@drawable/image_zebrina</item>
+        <item>@drawable/image_guzmania</item>
     </array>
 
 </resources>
