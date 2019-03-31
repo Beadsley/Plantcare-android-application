@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlantsFragment"
-    android:background="@color/colorPrimary">
-
-
+    tools:context=".ImageFragment">
+    <ImageView
+        android:id="@+id/plant_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </FrameLayout>

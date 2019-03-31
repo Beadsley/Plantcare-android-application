@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class PlantInfoActivity extends AppCompatActivity implements PlantsFragment.PlantListener {
+public class PlantInfoActivity extends AppCompatActivity implements PlantNamesFragment.PlantListener {
     private static final String TAG= "PlantInfo";
     TextView lightRequirementDetails;
     TextView waterRequirementDetails;
