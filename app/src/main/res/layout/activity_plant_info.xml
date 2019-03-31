@@ -5,6 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".PlantInfoActivity"
     android:orientation="vertical">
+
+    <fragment
+        android:id="@+id/fragment4"
+        android:name="com.example.myplants.ImageFragment"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="100dp"/>
+
     <Button
         android:id="@+id/btn_main_menu"
         android:layout_width="120dp"
@@ -25,20 +36,23 @@
 
         <fragment
             android:id="@+id/fragment"
-            android:name="com.example.myplants.PlantsFragment"
+            android:name="com.example.myplants.PlantNamesFragment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            tools:layout="@layout/fragment_plants"/>
+            tools:layout="@layout/fragment_plant_names"/>
 
         <fragment
             android:id="@+id/fragment2"
             android:name="com.example.myplants.PlantDescriptionsFragment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_weight="5"
             tools:layout="@layout/fragment_plant_descriptions"/>
 
     </LinearLayout>
+
 
 </RelativeLayout>

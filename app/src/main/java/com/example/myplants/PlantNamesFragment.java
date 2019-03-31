@@ -16,10 +16,10 @@ import android.widget.ListView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PlantsFragment extends ListFragment {
+public class PlantNamesFragment extends ListFragment {
     private PlantListener plantListener;
 
-    public PlantsFragment() {
+    public PlantNamesFragment() {
         // Required empty public constructor
     }
 
