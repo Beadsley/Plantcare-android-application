@@ -4,8 +4,9 @@
     <string name="btn_go_back">Go Back</string>
     <string name="btn_plant_info_text"><font size="20">Plant Information</font>\n\<font size="10">Know about plants in your home</font></string>
     <string name="btn_favourite_text"><font size="20">Favourites</font>\n\<font size="10">View a list of favourite plants</font></string>
-    <string name="btn_funfacts_text"><font size="20">Fun Facts</font>\n\<font size="10">Click to see a random fun fact</font></string>
+    <string name="btn_funfacts_text"><font size="20">Settings</font>\n\<font size="10">Set your plant preferences</font></string>
     <string name="light_requirements_txt">Light Requirements:</string>
     <string name="water_requirements_txt">Water Requirements:</string>
     <string name="plant_info_hint_txt">Select a plant from the list</string>
+    <string name="btn_submit_txt">Submit</string>
 </resources>
