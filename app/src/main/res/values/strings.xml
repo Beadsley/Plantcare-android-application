@@ -9,4 +9,5 @@
     <string name="water_requirements_txt">Water Requirements:</string>
     <string name="plant_info_hint_txt">Select a plant from the list</string>
     <string name="btn_submit_txt">Submit</string>
+    <string name="remind_me"><font size="20">Remind Me</font>\n\<font size="10">Set a reminder for watering </font></string>
 </resources>
