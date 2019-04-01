@@ -43,7 +43,7 @@
         android:gravity="left|center_vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:onClick="onPlantInfo"/>
+        android:onClick="onClickFavourites"/>
     <Button
         android:id="@+id/btn_funfacts"
         android:layout_width="match_parent"

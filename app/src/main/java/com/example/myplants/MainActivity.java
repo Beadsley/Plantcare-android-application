@@ -18,4 +18,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    public void onClickFavourites(View view) {
+        Intent intent = new Intent(this, FavouritesActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
