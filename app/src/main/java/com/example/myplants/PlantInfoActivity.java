@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static com.example.myplants.R.id.plant_info_hint_txt;
 
@@ -35,6 +36,8 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("PLANT INFO");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         lightRequirementDetails = findViewById(R.id.light_requirements);
         waterRequirementDetails = findViewById(R.id.water_requirements);
@@ -79,6 +82,8 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
         btnAddFavourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "onClick: favourite button pressed");
+                Toast.makeText(PlantInfoActivity.this, "Plant added to your favourites", Toast.LENGTH_LONG).show();
                 int[] favourites = getResources().getIntArray(R.array.favourites);
                     favourites [favourites.length-1] = favIndex;
                     Log.v(TAG,"favourites"+favourites );
