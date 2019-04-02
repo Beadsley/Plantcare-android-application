@@ -73,6 +73,7 @@
         <item>@drawable/image_zebrina</item>
         <item>@drawable/image_guzmania</item>
     </array>
+
     <integer-array name="favourites">
         <item>-1</item>
     </integer-array>

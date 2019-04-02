@@ -6,6 +6,9 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
+<include
+    layout="@layout/tool_bar"/>
+
     <Button
         android:id="@+id/btn_plant_info"
         android:layout_width="match_parent"
