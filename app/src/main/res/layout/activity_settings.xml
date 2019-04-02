@@ -44,19 +44,40 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            android:layout_marginBottom="2dp"/>
         <Button
         android:id="@+id/btn_main_menu"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
         android:background="@color/colorPrimary"
-        android:drawableLeft="@drawable/icon_go_back"
-
+        android:drawableLeft="@drawable/icon_go_back2"
+        android:drawablePadding="10dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="2dp"
-        android:layout_marginLeft="2dp"
+        android:layout_marginLeft="50dp"
         android:onClick="onGoBack"/>
+
+        <Button
+            android:id="@+id/btn_refresh"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:background="@color/colorPrimary"
+            android:drawableLeft="@drawable/icon_refresh"
+            android:drawablePadding="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="185dp"
+            android:onClick="onRefresh"/>
+
+
+
 
     </RelativeLayout>
 </LinearLayout>

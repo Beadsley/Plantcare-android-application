@@ -59,11 +59,6 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
                 else{
                     cancelAlarm();
                 }
-                // Set the state of the switch bar
-                SharedPreferences settings = getSharedPreferences("switch_state_id", 0);
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putBoolean("notification_switchkey", isChecked);
-                editor.commit();
 
             }
         });
@@ -87,6 +82,10 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
                 editor.commit();
             }
         });
+    }
+
+    public void setNotificationSwitchState(){
+
     }
 
     @Override
@@ -133,5 +132,8 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
     }
 
 
-
+    public void onRefresh(View view) {
+        notificationsSwitch.setChecked(false);
+        clearAllSwitch.setChecked(false);
+    }
 }
