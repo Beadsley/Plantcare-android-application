@@ -17,20 +17,20 @@
         android:layout_marginBottom="80dp"
         tools:layout="@layout/fragment_image"/>
 
-    <Button
-        android:id="@+id/btn_main_menu"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/btn_go_back"
-        android:textAllCaps="false"
-        android:typeface="sans"
-        android:textColor="#FFFFFF"
-        android:layout_alignParentRight="true"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnAddFavourite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-        android:onClick="onGoBack"/>
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp"
+        android:clickable="true"
+        android:src="@drawable/icon_favourite"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
