@@ -8,22 +8,21 @@
     android:orientation="vertical">
 
 
-
-
     <Switch
         android:id="@+id/switch_notifications"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="2dp"
+        android:background="@color/colorPrimary"
         android:drawableLeft="@drawable/icon_alert"
         android:drawablePadding="20dp"
-        android:background="@color/colorPrimary"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
         android:gravity="left|center_vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="@string/switch_reminder_txt" />
+        android:text="@string/switch_reminder_txt"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textColorLink="@color/colorWhite" />
 
 
     <RelativeLayout
