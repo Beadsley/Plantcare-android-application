@@ -80,7 +80,6 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
             @Override
             public void onClick(View v) {
                 int[] favourites = getResources().getIntArray(R.array.favourites);
-
                     favourites [favourites.length-1] = favIndex;
                     Log.v(TAG,"favourites"+favourites );
             }

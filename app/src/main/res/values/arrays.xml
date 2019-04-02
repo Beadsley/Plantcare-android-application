@@ -75,7 +75,10 @@
     </array>
 
     <integer-array name="favourites">
-        <item>-1</item>
+        <item>5</item>
+        <item>8</item>
+        <item>3</item>
+        <item>7</item>
     </integer-array>
 
 </resources>

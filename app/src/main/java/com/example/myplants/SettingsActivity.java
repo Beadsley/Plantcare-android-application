@@ -22,7 +22,7 @@ import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class SettingsActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
+public class SettingsActivity extends OptionsMenuActivity implements TimePickerDialog.OnTimeSetListener {
     private static final String TAG= "PlantSettings";
     Switch notificationsSwitch;
     Button submit;

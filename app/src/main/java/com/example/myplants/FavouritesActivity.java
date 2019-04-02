@@ -27,6 +27,7 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
     TextView funFacts_txt;
     TextView hint_txt;
     ImageView plantImage;
+    int[] favourites;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,22 +51,20 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
 
         plantImage=findViewById(R.id.plant_image);
         //create an arraylist of favourite plant indices
-        final ArrayList<Integer> favouritesIndices= new ArrayList<>();
-        favouritesIndices.add(0);
-        favouritesIndices.add(1);
-        favouritesIndices.add(3);
-        Log.v(TAG, "indices: "+favouritesIndices);
+
+        favourites = getResources().getIntArray(R.array.favourites);
 
         //create an arraylist of favourite plant names
         ArrayList<String> favouritesNames= new ArrayList<>();
-        for (int i=0; i<favouritesIndices.size();i++){
-            int index=favouritesIndices.get(i);
+        for (int i=0; i <favourites.length; i++) {
+
+            int index = favourites [i];
             Log.v(TAG, "index: "+index);
             favouritesNames.add((getResources().getStringArray(R.array.plants))[index]);
             Log.v(TAG, "names: " +favouritesNames.get(i));
         }
 
-        final ArrayAdapter<String> adapter =new ArrayAdapter<>(this,
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_expandable_list_item_1,
                 favouritesNames);
 
@@ -73,9 +72,10 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int index = favourites [position];
                 Log.v(TAG, "Position: "+position);
-                Log.v(TAG, "index: "+favouritesIndices.get(position));
-                onPlantSelected(favouritesIndices.get(position));
+                Log.v(TAG, "index: "+ index);
+                onPlantSelected(index);
             }
         });
     }
