@@ -6,6 +6,8 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,12 +29,20 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
-
+        Log.v(TAG,"onCreate initialised");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+
+        // finding the state of the switch bar
         notificationsSwitch= findViewById(R.id.switch_notifications);
+        SharedPreferences settings = getSharedPreferences("Remindstateid", 0);
+        boolean silent = settings.getBoolean("switchkey", false);
+        Log.v(TAG, "state :"+silent);
+        notificationsSwitch.setChecked(silent);
+
+        // connect submit button
         submit=findViewById(R.id.btn_submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +51,6 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
 
                     DialogFragment timePicker = new TimePickerFragment();
                     timePicker.show(getSupportFragmentManager(), "time picker");
-
                 }
                 else {
                     cancelAlarm();
@@ -50,16 +59,18 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
         });
 
         notificationsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    SharedPreferences.Editor sharedPreferences = getSharedPreferences("com.example.myplants", MODE_PRIVATE).edit();
-                    sharedPreferences.putBoolean("isChecked", true).apply();
-                    Log.v(TAG, "Shared preferences: "+sharedPreferences.toString());
-                }
+            public void onCheckedChanged(CompoundButton buttonView,
+                                         boolean isChecked) {
+
+                // Set the state of the switch bar
+                SharedPreferences settings = getSharedPreferences("Remindstateid", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean("switchkey", isChecked);
+                editor.commit();
             }
         });
-
     }
 
     @Override
@@ -96,9 +107,14 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
         Toast.makeText(this, "Reminder Cancelled", Toast.LENGTH_SHORT).show();
     }
 
+
     public void onGoBack(View view) {
+
         Intent intent =new Intent(this, MainActivity.class);
         startActivity(intent);
-        finish();
+        onPause();
     }
+
+
+
 }
