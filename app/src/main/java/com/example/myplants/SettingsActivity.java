@@ -24,12 +24,10 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
     private static final String TAG= "PlantSettings";
     Switch notificationsSwitch;
     Button submit;
-    Boolean alarmSet;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
 
-        Log.v(TAG, "Alarm Set: "+alarmSet);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
@@ -40,18 +38,24 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
             @Override
             public void onClick(View v) {
                 if(notificationsSwitch.isChecked()){
-                    //Toast.makeText(SettingsActivity.this, "Checked baby", Toast.LENGTH_SHORT).show();
 
                     DialogFragment timePicker = new TimePickerFragment();
                     timePicker.show(getSupportFragmentManager(), "time picker");
-                    notificationsSwitch.setChecked(true);
-                    
 
                 }
                 else {
-                    //Toast.makeText(SettingsActivity.this, "Not checked", Toast.LENGTH_SHORT).show();
                     cancelAlarm();
-                    //notificationsSwitch.setChecked(false);
+                }
+            }
+        });
+
+        notificationsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    SharedPreferences.Editor sharedPreferences = getSharedPreferences("com.example.myplants", MODE_PRIVATE).edit();
+                    sharedPreferences.putBoolean("isChecked", true).apply();
+                    Log.v(TAG, "Shared preferences: "+sharedPreferences.toString());
                 }
             }
         });
