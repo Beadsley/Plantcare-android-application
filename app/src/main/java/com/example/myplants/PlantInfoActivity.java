@@ -2,6 +2,7 @@ package com.example.myplants;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,9 @@ public class PlantInfoActivity extends AppCompatActivity implements PlantNamesFr
     TextView funFacts_txt;
     TextView hint_txt;
     ImageView plantImage;
+    private FloatingActionButton btnAddFavourite;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,9 @@ public class PlantInfoActivity extends AppCompatActivity implements PlantNamesFr
         hint_txt=findViewById(plant_info_hint_txt);
 
         plantImage=findViewById(R.id.plant_image);
+
+        btnAddFavourite = (FloatingActionButton) findViewById(R.id.btnAddFavourite);
+        btnAddFavourite.hide();
 
     }
     // sends the user back to the main menu when the go back button is selected
@@ -66,5 +73,20 @@ public class PlantInfoActivity extends AppCompatActivity implements PlantNamesFr
         Drawable d=getResources().obtainTypedArray(R.array.plantimages).getDrawable(index);
         plantImage.setImageDrawable(d);
 
+        btnAddFavourite.show();
+        final int favIndex = index;
+
+        btnAddFavourite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int[] favourites = getResources().getIntArray(R.array.favourites);
+
+                    favourites [favourites.length-1] = favIndex;
+                    Log.v(TAG,"favourites"+favourites );
+            }
+        });
+
     }
+
 }
+
