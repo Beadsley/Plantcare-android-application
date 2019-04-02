@@ -59,7 +59,6 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
                 else{
                     cancelAlarm();
                 }
-
                 // Set the state of the switch bar
                 SharedPreferences settings = getSharedPreferences("switch_state_id", 0);
                 SharedPreferences.Editor editor = settings.edit();
@@ -75,6 +74,7 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
                     Log.v(TAG, "clear all checked");
+                    getResources().getIntArray(R.array.favourites);
                 }
                 else {
                     Log.v(TAG, "clear all not checked");
@@ -91,6 +91,7 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        Log.v(TAG, "onTimeSet initialised");
         Calendar calendar=Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
         calendar.set(Calendar.MINUTE, minute);
