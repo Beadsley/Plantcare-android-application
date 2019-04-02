@@ -25,8 +25,7 @@ import java.util.Calendar;
 public class SettingsActivity extends OptionsMenuActivity implements TimePickerDialog.OnTimeSetListener {
     private static final String TAG= "PlantSettings";
     Switch notificationsSwitch;
-    Button submit;
-
+    Switch clearAllSwitch;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         Log.v(TAG,"onCreate initialised");
@@ -35,39 +34,56 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
         setContentView(R.layout.activity_settings);
 
 
-        // finding the state of the switch bar
+        clearAllSwitch= findViewById(R.id.switch_clear_favourites);
         notificationsSwitch= findViewById(R.id.switch_notifications);
-        SharedPreferences settings = getSharedPreferences("Remindstateid", 0);
-        boolean silent = settings.getBoolean("switchkey", false);
-        Log.v(TAG, "state :"+silent);
-        notificationsSwitch.setChecked(silent);
+        // finding the state of the switch bars
+        SharedPreferences settings = getSharedPreferences("switch_state_id", 0);
+        boolean notification = settings.getBoolean("notification_switchkey", false);
+        boolean clearAll = settings.getBoolean("clearAll_switchkey", false);
+        Log.v(TAG, "state :"+notification);
+        notificationsSwitch.setChecked(notification);
+        clearAllSwitch.setChecked(clearAll);
 
-        // connect submit button
-        submit=findViewById(R.id.btn_submit);
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(notificationsSwitch.isChecked()){
-
-                    DialogFragment timePicker = new TimePickerFragment();
-                    timePicker.show(getSupportFragmentManager(), "time picker");
-                }
-                else {
-                    cancelAlarm();
-                }
-            }
-        });
-
+        // when the reminder switch is intilialised
         notificationsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
             @Override
             public void onCheckedChanged(CompoundButton buttonView,
                                          boolean isChecked) {
 
+                if (isChecked){
+                    //set reminder
+                    DialogFragment timePicker = new TimePickerFragment();
+                    timePicker.show(getSupportFragmentManager(), "time picker");
+
+                }
+                else{
+                    cancelAlarm();
+                }
+
                 // Set the state of the switch bar
-                SharedPreferences settings = getSharedPreferences("Remindstateid", 0);
+                SharedPreferences settings = getSharedPreferences("switch_state_id", 0);
                 SharedPreferences.Editor editor = settings.edit();
-                editor.putBoolean("switchkey", isChecked);
+                editor.putBoolean("notification_switchkey", isChecked);
+                editor.commit();
+
+            }
+        });
+
+        //when the clear all is initialised
+        clearAllSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    Log.v(TAG, "clear all checked");
+                }
+                else {
+                    Log.v(TAG, "clear all not checked");
+                }
+
+                // Set the state of the switch bar
+                SharedPreferences settings = getSharedPreferences("switch_state_id", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean("clearAll_switchkey", isChecked);
                 editor.commit();
             }
         });
