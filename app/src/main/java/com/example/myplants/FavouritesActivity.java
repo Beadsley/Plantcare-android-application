@@ -37,6 +37,8 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("Favourites");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         listview=findViewById(R.id.listview_favourites);
 
