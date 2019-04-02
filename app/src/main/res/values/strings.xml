@@ -9,4 +9,7 @@
     <string name="water_requirements_txt">Water Requirements:</string>
     <string name="plant_info_hint_txt">Select a plant from the list</string>
     <string name="btn_submit_txt">Submit</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
