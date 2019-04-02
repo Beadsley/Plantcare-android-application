@@ -17,5 +17,6 @@
     <string name="home">Home</string>
     <string name="mnu_favourites">Favourites</string>
     <string name="mnu_plant_info">Plant Info</string>
-    <string name="switch_clear_favourites_txt">Clear Favourites</string>
+    <string name="switch_clear_favourites_txt"><font size="20">Clear Favourites</font>\n\<font size="10">Remove all plants from favourites</font></string>
+    <string name="favourite_plant"><font size="20">Favourite Plant</font>\n\<font size="10">This will be the first plant you see</font></string>
 </resources>

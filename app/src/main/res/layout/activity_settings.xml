@@ -38,6 +38,28 @@
         android:paddingRight="10dp"
         android:text="@string/switch_clear_favourites_txt"
         android:theme="@style/SCBSwitch"/>
+    <Switch
+        android:id="@+id/switch_favourite_plant"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="2dp"
+        android:drawableLeft="@drawable/icon_favourite"
+        android:drawablePadding="20dp"
+        android:background="@color/colorPrimary"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/favourite_plant"
+        android:theme="@style/SCBSwitch"/>
+    <ListView
+        android:id="@+id/listview_favourites"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_gravity="center"
+        android:visibility="invisible"
+        ></ListView>
 
 
 
@@ -45,8 +67,8 @@
 
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="470dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="2dp"
         >
 
         <Button
