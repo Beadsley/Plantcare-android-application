@@ -6,6 +6,7 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
+
     <Button
         android:id="@+id/btn_plant_info"
         android:layout_width="match_parent"
@@ -25,6 +26,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:onClick="onPlantInfo"/>
+
     <Button
         android:id="@+id/btn_favourites"
         android:layout_width="match_parent"
@@ -34,16 +36,16 @@
         android:layout_marginRight="10dp"
         android:background="@color/colorPrimary"
         android:drawableLeft="@drawable/icon_arrow"
-        android:drawablePadding="20dp"
         android:drawableRight="@drawable/icon_favourite"
+        android:drawablePadding="20dp"
+        android:gravity="left|center_vertical"
+        android:onClick="onPlantInfo"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="@string/btn_favourite_text"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:typeface="sans"
-        android:gravity="left|center_vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:onClick="onPlantInfo"/>
+        android:typeface="sans" />
     <Button
         android:id="@+id/btn_funfacts"
         android:layout_width="match_parent"

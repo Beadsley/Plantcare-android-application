@@ -50,6 +50,6 @@ public class PlantNamesFragment extends ListFragment {
     // Method passes the index on the plant selected
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        plantListener.onPlantSelected(position);
+
     }
 }

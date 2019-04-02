@@ -58,4 +58,5 @@
         android:gravity="center"
         android:text="@string/plant_info_hint_txt"/>
 
+
 </LinearLayout>

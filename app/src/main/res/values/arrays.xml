@@ -74,4 +74,9 @@
         <item>@drawable/image_guzmania</item>
     </array>
 
+    <integer-array name="favourites">
+    </integer-array>
+
+
+
 </resources>
