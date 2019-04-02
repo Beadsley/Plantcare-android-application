@@ -33,9 +33,9 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
 
-        android.support.v7.widget.Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("HOME");
+        setTitle("Favourites");
 
         listview=findViewById(R.id.listview_favourites);
 

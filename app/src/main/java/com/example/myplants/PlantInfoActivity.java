@@ -32,6 +32,10 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_info);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("PLANT INFO");
+
         lightRequirementDetails = findViewById(R.id.light_requirements);
         waterRequirementDetails = findViewById(R.id.water_requirements);
         funFactsDetails = findViewById(R.id.fun_fact);
