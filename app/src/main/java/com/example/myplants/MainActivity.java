@@ -20,7 +20,7 @@ public class MainActivity extends OptionsMenuActivity {
 
         android.support.v7.widget.Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("HOME");
+        setTitle("Home");
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
