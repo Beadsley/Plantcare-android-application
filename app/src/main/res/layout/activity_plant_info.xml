@@ -6,6 +6,11 @@
     tools:context=".PlantInfoActivity"
     android:orientation="vertical">
 
+    <include
+        layout ="@layout/tool_bar"
+        android:id="@+id/toolbar"
+        />
+
     <fragment
         android:id="@+id/fragment4"
         android:name="com.example.myplants.ImageFragment"
@@ -34,7 +39,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@id/toolbar">
 
         <fragment
             android:id="@+id/fragment"

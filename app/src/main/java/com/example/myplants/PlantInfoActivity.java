@@ -3,8 +3,10 @@ package com.example.myplants;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,7 +14,7 @@ import android.widget.TextView;
 
 import static com.example.myplants.R.id.plant_info_hint_txt;
 
-public class PlantInfoActivity extends AppCompatActivity implements PlantNamesFragment.PlantListener {
+public class PlantInfoActivity extends OptionsMenuActivity implements PlantNamesFragment.PlantListener {
     private static final String TAG= "PlantInfo";
     TextView lightRequirementDetails;
     TextView waterRequirementDetails;
@@ -30,28 +32,22 @@ public class PlantInfoActivity extends AppCompatActivity implements PlantNamesFr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_info);
 
-        lightRequirementDetails=findViewById(R.id.light_requirements);
-        waterRequirementDetails=findViewById(R.id.water_requirements);
-        funFactsDetails=findViewById(R.id.fun_fact);
+        lightRequirementDetails = findViewById(R.id.light_requirements);
+        waterRequirementDetails = findViewById(R.id.water_requirements);
+        funFactsDetails = findViewById(R.id.fun_fact);
 
-        lightRequirement_txt=findViewById(R.id.light_requirements_txt);
-        waterRequirement_txt=findViewById(R.id.water_requirements_txt);
-        funFacts_txt=findViewById(R.id.fun_facts_txt);
-        hint_txt=findViewById(plant_info_hint_txt);
+        lightRequirement_txt = findViewById(R.id.light_requirements_txt);
+        waterRequirement_txt = findViewById(R.id.water_requirements_txt);
+        funFacts_txt = findViewById(R.id.fun_facts_txt);
+        hint_txt = findViewById(plant_info_hint_txt);
 
-        plantImage=findViewById(R.id.plant_image);
+        plantImage = findViewById(R.id.plant_image);
 
         btnAddFavourite = (FloatingActionButton) findViewById(R.id.btnAddFavourite);
         btnAddFavourite.hide();
 
     }
-    // sends the user back to the main menu when the go back button is selected
-    public void onGoBack(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
 
-    }
     // method sets a description to the 'plantDetails Textview' when a plant is selected
     @Override
     public void onPlantSelected(int index) {
