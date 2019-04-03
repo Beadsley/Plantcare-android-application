@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static com.example.myplants.R.id.plant_info_hint_txt;
 
 public class PlantInfoActivity extends OptionsMenuActivity implements PlantNamesFragment.PlantListener {
     private static final String TAG= "PlantInfo";
@@ -25,6 +24,7 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
     TextView funFacts_txt;
     TextView hint_txt;
     ImageView plantImage;
+    ImageView indoorPlants;
     private FloatingActionButton btnAddFavourite;
 
 
@@ -35,7 +35,7 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("PLANT INFO");
+        setTitle("Plant Information");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -46,9 +46,9 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
         lightRequirement_txt = findViewById(R.id.light_requirements_txt);
         waterRequirement_txt = findViewById(R.id.water_requirements_txt);
         funFacts_txt = findViewById(R.id.fun_facts_txt);
-        hint_txt = findViewById(plant_info_hint_txt);
 
         plantImage = findViewById(R.id.plant_image);
+        indoorPlants = findViewById(R.id.indoorPlants);
 
         btnAddFavourite = (FloatingActionButton) findViewById(R.id.btnAddFavourite);
         btnAddFavourite.hide();
@@ -58,6 +58,7 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
     // method sets a description to the 'plantDetails Textview' when a plant is selected
     @Override
     public void onPlantSelected(int index) {
+        indoorPlants.setVisibility(View.INVISIBLE);
 
         lightRequirement_txt.setText("Light Requirements");
         String [] lightRequirements= getResources().getStringArray(R.array.lightRequirements);
@@ -71,7 +72,7 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
         String [] funFacts =getResources().getStringArray(R.array.funFacts);
         funFactsDetails.setText(funFacts[index]);
 
-        hint_txt.setText("");
+
 
         Drawable d=getResources().obtainTypedArray(R.array.plantimages).getDrawable(index);
         plantImage.setImageDrawable(d);

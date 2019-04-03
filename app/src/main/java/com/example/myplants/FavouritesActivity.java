@@ -27,6 +27,7 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
     TextView funFacts_txt;
     TextView hint_txt;
     ImageView plantImage;
+    ImageView indoorPlants;
     int[] favourites;
 
     @Override
@@ -49,9 +50,9 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
         lightRequirement_txt=findViewById(R.id.light_requirements_txt);
         waterRequirement_txt=findViewById(R.id.water_requirements_txt);
         funFacts_txt=findViewById(R.id.fun_facts_txt);
-        hint_txt=findViewById(R.id.plant_info_hint_txt);
 
         plantImage=findViewById(R.id.plant_image);
+        indoorPlants=findViewById(R.id.indoorPlants);
         //create an arraylist of favourite plant indices
 
         favourites = getResources().getIntArray(R.array.favourites);
@@ -85,6 +86,7 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
     // method sets a description to the 'plantDetails Textview' when a plant is selected
     @Override
     public void onPlantSelected(int index) {
+        indoorPlants.setVisibility(View.INVISIBLE);
         Log.v(TAG, "index passed:"+index);
         lightRequirement_txt.setText("Light Requirements");
         String [] lightRequirements= getResources().getStringArray(R.array.lightRequirements);
@@ -98,7 +100,6 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
         String [] funFacts =getResources().getStringArray(R.array.funFacts);
         funFactsDetails.setText(funFacts[index]);
 
-        hint_txt.setText("");
 
         Drawable d=getResources().obtainTypedArray(R.array.plantimages).getDrawable(index);
         plantImage.setImageDrawable(d);
