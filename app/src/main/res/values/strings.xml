@@ -12,11 +12,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="switch_reminder_txt"><font size="20">Reminder</font>\n\<font size="10">Set a reminder for watering your plants</font></string>
+    <string name="switch_reminder_txt"><font size="20">Set Daily Reminder</font>\n\<font size="10">Set a reminder for watering your plants</font></string>
     <string name="mnu_reminders">Reminders</string>
     <string name="home">Home</string>
     <string name="mnu_favourites">Favourites</string>
     <string name="mnu_plant_info">Plant Info</string>
-    <string name="switch_clear_favourites_txt"><font size="20">Clear Favourites</font>\n\<font size="10">Remove all plants from favourites</font></string>
-    <string name="favourite_plant"><font size="20">Favourite Plant</font>\n\<font size="10">This will be the first plant you see</font></string>
+    <string name="switch_clear_favourites_txt"><font size="20">Clear Favourites List</font>\n\<font size="10">Remove all plants from favourites</font></string>
+    <string name="favourite_plant"><font size="20">Select Favourite Plant</font>\n\<font size="10">Change the first plant you see in plant information</font></string>
 </resources>
