@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -32,6 +33,8 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
     Switch clearAllSwitch;
     Switch favouritePlantSwitch;
     ListView listview;
+    Spinner favouriteSpinner;
+    String [] plantNames;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 
@@ -44,27 +47,38 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
         notificationsSwitch= findViewById(R.id.switch_notifications);
         favouritePlantSwitch=findViewById(R.id.switch_favourite_plant);
         listview=findViewById(R.id.listview_favourites);
+        favouriteSpinner= findViewById(R.id.spinner_favourite);
 
-        // finding the state of the switch bars
-        SharedPreferences settings = getSharedPreferences("switch_state_id", 0);
+        // create a listview of plant names
+        plantNames =getResources().getStringArray(R.array.plants);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,plantNames);
+        listview.setAdapter(adapter);
 
+
+        //retreive index of favourite plant set by user, default 0
         SharedPreferences favsettings = getSharedPreferences("favourite_plant", 0);
         int favNumber=favsettings.getInt("favourite_plant", 0);
         Log.v(TAG, "favourite number on create: "+favNumber);
 
+        // finding the state of the switch bars
+        SharedPreferences settings = getSharedPreferences("switch_state_id", 0);
         boolean notification = settings.getBoolean("notification_switchkey", false);
         boolean clearAll = settings.getBoolean("clearAll_switchkey", false);
-        boolean favourite = settings.getBoolean("favourite_switchkey", false);
+        final boolean favourite = settings.getBoolean("favourite_switchkey", false);
 
         notificationsSwitch.setChecked(notification);
         clearAllSwitch.setChecked(clearAll);
         favouritePlantSwitch.setChecked(favourite);
+        if(favouritePlantSwitch.isChecked()){
+            Log.v(TAG, "favourite switch was initialised");
+            setFavSpinner(favNumber);
+        }
+        else
+        {
+            Log.v(TAG, "favourite switch was NOT initialised");
+        }
 
-        // create a listview of plant names
-        String [] plantNames =getResources().getStringArray(R.array.plants);
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,plantNames);
-        listview.setAdapter(adapter);
 
         // when the reminder switch is intilialised
         notificationsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -117,12 +131,15 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                             Log.v(TAG, "position: "+position);
+                            //save favourite in preferences
                             SharedPreferences favsettings = getSharedPreferences("favourite_plant", 0);
                             SharedPreferences.Editor editor = favsettings.edit();
                             editor.putInt("favourite_plant", position);
                             editor.commit();
                             listview.setVisibility(View.INVISIBLE);
                             Toast.makeText(SettingsActivity.this, "Favourite plant set", Toast.LENGTH_SHORT).show();
+                            setFavSpinner(position);             //add favourite to spinner
+
                         }
                     });
                 }
@@ -135,6 +152,8 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
                     editor.commit();
                     listview.setVisibility(View.INVISIBLE);
                     Toast.makeText(SettingsActivity.this, "Favourite plant disabled", Toast.LENGTH_SHORT).show();
+                    //set spinner to invisible
+                    favouriteSpinner.setVisibility(View.INVISIBLE);
                 }
                 // Set the state of the switch bar
                 SharedPreferences settings = getSharedPreferences("switch_state_id", 0);
@@ -143,6 +162,21 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
                 editor.commit();
             }
         });
+
+    }
+    public void setFavSpinner(int index){
+        // add favourite to spinner
+        String [] favouriteplant =new String[] {plantNames[index]};
+        Log.v(TAG, "favourite plant"+favouriteplant[0]);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item,
+                favouriteplant);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        favouriteSpinner.setAdapter(adapter);
+        favouriteSpinner.setVisibility(View.VISIBLE);
+        //favouriteSpinner.setDropDownVerticalOffset();
+
 
     }
 

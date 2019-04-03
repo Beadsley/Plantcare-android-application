@@ -38,21 +38,35 @@
         android:paddingRight="10dp"
         android:text="@string/switch_clear_favourites_txt"
         android:theme="@style/SCBSwitch"/>
-    <Switch
-        android:id="@+id/switch_favourite_plant"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="2dp"
-        android:drawableLeft="@drawable/icon_favourite"
-        android:drawablePadding="20dp"
-        android:background="@color/colorPrimary"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:gravity="left|center_vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="@string/favourite_plant"
-        android:theme="@style/SCBSwitch"/>
+        android:layout_height="wrap_content">
+
+        <Switch
+            android:id="@+id/switch_favourite_plant"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="2dp"
+            android:drawableLeft="@drawable/icon_favourite"
+            android:drawablePadding="20dp"
+            android:background="@color/colorPrimary"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/favourite_plant"
+            android:theme="@style/SCBSwitch"/>
+        <Spinner
+            android:id="@+id/spinner_favourite"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginRight="50dp"
+            android:backgroundTint="#FFFFFF"
+            android:visibility="invisible"
+            />
+    </RelativeLayout>
+
     <ListView
         android:id="@+id/listview_favourites"
         android:layout_width="match_parent"
