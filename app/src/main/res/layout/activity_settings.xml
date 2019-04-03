@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
 
+
     <Switch
         android:id="@+id/switch_notifications"
         android:layout_width="match_parent"
