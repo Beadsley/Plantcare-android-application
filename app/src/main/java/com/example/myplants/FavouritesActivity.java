@@ -1,6 +1,7 @@
 package com.example.myplants;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -17,6 +18,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class FavouritesActivity extends OptionsMenuActivity implements PlantNamesFragment.PlantListener{
 
@@ -46,8 +49,6 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 
-        MenuItem selectedItem = (MenuItem) findViewById(R.id.nav_favourites);
-        selectedItem.setChecked(true);
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -88,29 +89,34 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
 
         plantImage=findViewById(R.id.plant_image);
         indoorPlants=findViewById(R.id.indoorPlants);
-        //create an arraylist of favourite plant indices
 
-        favourites = getResources().getIntArray(R.array.favourites);
+        //open hashset of names
+        Set<String> favouriteSet = new HashSet<String>();
+        SharedPreferences settingsopen = getSharedPreferences("fav_id", 0);
+        favouriteSet= settingsopen.getStringSet("favourites",new HashSet<String>());
+        Log.v(TAG, "favourites from set: "+favouriteSet);
 
-        //create an arraylist of favourite plant names
-        ArrayList<String> favouritesNames= new ArrayList<>();
-        for (int i=0; i <favourites.length; i++) {
-
-            int index = favourites [i];
-            Log.v(TAG, "index: "+index);
-            favouritesNames.add((getResources().getStringArray(R.array.plants))[index]);
-            Log.v(TAG, "names: " +favouritesNames.get(i));
+        //check if list is empty
+        ArrayList<String> favouritesNames2= new ArrayList<>();
+        final ArrayList<Integer> favouriteIndices= new ArrayList<>();
+        for (String s: favouriteSet){
+            int index= Integer.parseInt(s);
+            Log.v(TAG, "indices from set: "+index);
+            favouritesNames2.add((getResources().getStringArray(R.array.plants))[index]);
+            favouriteIndices.add(index);
         }
+        Log.v(TAG, "names from set: " +favouritesNames2);
+        Log.v(TAG, "indices from list"+ favouriteIndices);
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_expandable_list_item_1,
-                favouritesNames);
+                favouritesNames2);
 
         listview.setAdapter(adapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int index = favourites [position];
+                int index = favouriteIndices.get(position);
                 Log.v(TAG, "Position: "+position);
                 Log.v(TAG, "index: "+ index);
                 onPlantSelected(index);

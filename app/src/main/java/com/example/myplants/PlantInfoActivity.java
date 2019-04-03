@@ -139,7 +139,6 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
 
                 Log.v(TAG, ""+favouriteSet);
                 //favouriteSet.clear();
-                Log.v(TAG, ""+favouriteSet);
 
                 editor.putStringSet("favourites",favouriteSet);
                 editor.commit();
