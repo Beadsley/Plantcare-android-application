@@ -15,7 +15,7 @@
         android:layout_width="270dp"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+        android:layout_alignBottom="@id/bottom_navigation"
         android:layout_marginTop="30dp"
         android:scaleType="fitCenter"
         android:visibility="visible"
@@ -36,10 +36,8 @@
         android:id="@+id/btnAddFavourite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="25dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="30dp"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_marginBottom="20dp"
         android:clickable="true"
         android:src="@drawable/icon_favourite"
         android:layout_alignParentRight="true"
@@ -50,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:layout_above="@id/bottom_navigation"
         android:layout_below="@id/toolbar">
 
         <fragment
@@ -72,6 +71,14 @@
             tools:layout="@layout/fragment_plant_descriptions"/>
 
     </LinearLayout>
-
-
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_button"
+        app:itemIconTint="@drawable/bottom_nav_colours"
+        app:itemTextColor="@color/colorAccent"
+        app:menu="@menu/bottom_menu">
+    </android.support.design.widget.BottomNavigationView>
 </RelativeLayout>

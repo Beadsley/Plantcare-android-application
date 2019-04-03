@@ -2,10 +2,13 @@ package com.example.myplants;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -40,6 +43,38 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
         setTitle("Favourites");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+
+        MenuItem selectedItem = (MenuItem) findViewById(R.id.nav_favourites);
+        selectedItem.setChecked(true);
+
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+
+                switch (id) {
+                    case R.id.nav_home:
+                        Intent intent = new Intent(FavouritesActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.nav_plantinfo:
+                        intent = new Intent(FavouritesActivity.this, PlantInfoActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.nav_favourites:
+                        intent = new Intent(FavouritesActivity.this, FavouritesActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.nav_settings:
+                        intent = new Intent(FavouritesActivity.this, SettingsActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+                return false;
+            }
+        });
 
         listview=findViewById(R.id.listview_favourites);
 

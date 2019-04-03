@@ -3,12 +3,15 @@ package com.example.myplants;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,6 +43,34 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+
+                switch (id) {
+                    case R.id.nav_home:
+                        Intent intent = new Intent(PlantInfoActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.nav_plantinfo:
+                        intent = new Intent(PlantInfoActivity.this, PlantInfoActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.nav_favourites:
+                        intent = new Intent(PlantInfoActivity.this, FavouritesActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.nav_settings:
+                        intent = new Intent(PlantInfoActivity.this, SettingsActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+                return false;
+            }
+        });
+
         lightRequirementDetails = findViewById(R.id.light_requirements);
         waterRequirementDetails = findViewById(R.id.water_requirements);
         funFactsDetails = findViewById(R.id.fun_fact);
@@ -55,22 +86,12 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
         btnAddFavourite = (FloatingActionButton) findViewById(R.id.btnAddFavourite);
         btnAddFavourite.hide();
 
-        //retreive index of favourite plant set by user, default 0
-        SharedPreferences favsettings = getSharedPreferences("favourite_plant", 0);
-        int favNumber=favsettings.getInt("favourite_plant", 0);
-        Log.v(TAG, "favourite number on create: "+favNumber);
-        if (favNumber != 0) {
-            Log.d(TAG, "onCreate: fav number not equal 0");
-            onPlantSelected(favNumber);
-            indoorPlants.setVisibility(View.INVISIBLE);
-        }
-
     }
 
     // method sets a description to the 'plantDetails Textview' when a plant is selected
     @Override
     public void onPlantSelected(int index) {
-
+        indoorPlants.setVisibility(View.INVISIBLE);
 
         lightRequirement_txt.setText("Light Requirements");
         String [] lightRequirements= getResources().getStringArray(R.array.lightRequirements);
