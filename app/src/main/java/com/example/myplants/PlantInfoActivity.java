@@ -51,6 +51,7 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
         plantImage = findViewById(R.id.plant_image);
         indoorPlants = findViewById(R.id.indoorPlants);
 
+
         btnAddFavourite = (FloatingActionButton) findViewById(R.id.btnAddFavourite);
         btnAddFavourite.hide();
 
@@ -58,14 +59,18 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
         SharedPreferences favsettings = getSharedPreferences("favourite_plant", 0);
         int favNumber=favsettings.getInt("favourite_plant", 0);
         Log.v(TAG, "favourite number on create: "+favNumber);
-        onPlantSelected(favNumber);
+        if (favNumber != 0) {
+            Log.d(TAG, "onCreate: fav number not equal 0");
+            onPlantSelected(favNumber);
+            indoorPlants.setVisibility(View.INVISIBLE);
+        }
 
     }
 
     // method sets a description to the 'plantDetails Textview' when a plant is selected
     @Override
     public void onPlantSelected(int index) {
-        indoorPlants.setVisibility(View.INVISIBLE);
+
 
         lightRequirement_txt.setText("Light Requirements");
         String [] lightRequirements= getResources().getStringArray(R.array.lightRequirements);
