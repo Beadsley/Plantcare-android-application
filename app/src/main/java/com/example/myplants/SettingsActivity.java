@@ -70,6 +70,16 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
         notificationsSwitch.setChecked(notification);
         clearAllSwitch.setChecked(clearAll);
         favouritePlantSwitch.setChecked(favourite);
+
+        //set state alarm txt
+        Log.v(TAG, "reminder :"+notification);
+        if (notification){
+            SharedPreferences remindSettings=getSharedPreferences("reminder_id",0);
+            String alarmText=remindSettings.getString("alarm", "Set Daily Reminder");
+            notificationsSwitch.setText(alarmText);
+        }
+
+
         if(favouritePlantSwitch.isChecked()){
             Log.v(TAG, "favourite switch was initialised");
             setFavSpinner(favNumber);
@@ -93,8 +103,14 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
 
                 }
                 else{
+                    notificationsSwitch.setText("Set Daily Reminder");
                     cancelAlarm();
                 }
+                // Set the state of the switch bar
+                SharedPreferences settings = getSharedPreferences("switch_state_id", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean("notification_switchkey", isChecked);
+                editor.commit();
 
             }
         });
@@ -192,6 +208,14 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
         String timeText = "Alarm set for: ";
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar.getTime());
         Toast.makeText(this, timeText, Toast.LENGTH_SHORT).show();
+        //save timeText
+        SharedPreferences settings = getSharedPreferences("reminder_id", 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("alarm", timeText);
+        editor.commit();
+
+        //set txt
+        notificationsSwitch.setText(timeText);
 
         startAlarm(calendar);
 

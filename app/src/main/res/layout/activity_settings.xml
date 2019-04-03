@@ -20,6 +20,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="@string/switch_reminder_txt"
+        android:textSize="20dp"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:theme="@style/SCBSwitch"/>
@@ -37,6 +38,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="@string/switch_clear_favourites_txt"
+        android:textSize="20dp"
         android:theme="@style/SCBSwitch"/>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -56,6 +58,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="@string/favourite_plant"
+            android:visibility="invisible"
             android:theme="@style/SCBSwitch"/>
         <Spinner
             android:id="@+id/spinner_favourite"
