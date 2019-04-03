@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".SettingsActivity">
 
 
     <Switch
@@ -22,60 +22,57 @@
         android:text="@string/switch_reminder_txt"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:theme="@style/SCBSwitch"/>
+        android:theme="@style/SCBSwitch" />
+
     <Switch
         android:id="@+id/switch_clear_favourites"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="2dp"
+        android:background="@color/colorPrimary"
         android:drawableLeft="@drawable/icon_delete_sweep"
         android:drawablePadding="20dp"
-        android:background="@color/colorPrimary"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
         android:gravity="left|center_vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="@string/switch_clear_favourites_txt"
-        android:theme="@style/SCBSwitch"/>
-
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:theme="@style/SCBSwitch" />
 
 
     <RelativeLayout
 
-        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="470dp"
-        >
+        android:background="@color/colorPrimary">
 
         <Button
             android:id="@+id/btn_main_menu"
             android:layout_width="40dp"
             android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="2dp"
             android:background="@color/colorPrimary"
             android:drawableLeft="@drawable/icon_go_back2"
             android:drawablePadding="10dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="2dp"
-            android:layout_marginLeft="50dp"
-            android:onClick="onGoBack"/>
+            android:onClick="onGoBack" />
 
         <Button
             android:id="@+id/btn_refresh"
             android:layout_width="40dp"
             android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="185dp"
+            android:layout_marginBottom="2dp"
             android:background="@color/colorPrimary"
             android:drawableLeft="@drawable/icon_refresh"
             android:drawablePadding="10dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="2dp"
-            android:layout_marginLeft="185dp"
-            android:onClick="onRefresh"/>
-
-
+            android:onClick="onRefresh" />
 
 
     </RelativeLayout>
