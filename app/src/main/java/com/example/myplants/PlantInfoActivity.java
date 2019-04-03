@@ -1,6 +1,7 @@
 package com.example.myplants;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
@@ -52,6 +53,12 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
 
         btnAddFavourite = (FloatingActionButton) findViewById(R.id.btnAddFavourite);
         btnAddFavourite.hide();
+
+        //retreive index of favourite plant set by user, default 0
+        SharedPreferences favsettings = getSharedPreferences("favourite_plant", 0);
+        int favNumber=favsettings.getInt("favourite_plant", 0);
+        Log.v(TAG, "favourite number on create: "+favNumber);
+        onPlantSelected(favNumber);
 
     }
 
