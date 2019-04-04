@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlantInfoActivity"
-    android:orientation="vertical">
+    tools:context=".FavouritesActivity">
+
     <include
         layout="@layout/tool_bar"/>
-
 
     <ImageView
         android:id="@+id/indoorPlants"
@@ -34,34 +33,18 @@
         android:layout_marginTop="90dp"
         tools:layout="@layout/fragment_image"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btnAddFavourite"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/bottom_navigation"
-        android:layout_marginBottom="10dp"
-        android:clickable="true"
-        android:src="@drawable/icon_favourite_white"
-        android:backgroundTint="@color/colorAccent"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp" />
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_above="@id/bottom_navigation"
-        android:layout_below="@id/toolbar">
-
-        <fragment
-            android:id="@+id/fragment"
-            android:name="com.example.myplants.PlantNamesFragment"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@id/bottom_navigation">
+        <ListView
+            android:id="@+id/listview_favourites"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            tools:layout="@layout/fragment_plant_names"/>
-
+            android:layout_height="wrap_content"
+            android:layout_weight="3">
+        </ListView>
         <fragment
             android:id="@+id/fragment2"
             android:name="com.example.myplants.PlantDescriptionsFragment"
@@ -71,8 +54,8 @@
             android:layout_marginRight="160dp"
             android:layout_weight="5"
             tools:layout="@layout/fragment_plant_descriptions"/>
-
     </LinearLayout>
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_alignParentBottom="true"
@@ -83,4 +66,5 @@
         app:itemTextColor="@color/colorAccent"
         app:menu="@menu/bottom_menu">
     </android.support.design.widget.BottomNavigationView>
+
 </RelativeLayout>

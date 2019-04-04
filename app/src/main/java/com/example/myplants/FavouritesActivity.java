@@ -44,6 +44,8 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
     TextView funFacts_txt;
     ImageView plantImage;
     ImageView indoorPlants;
+    TextView plantTitle;
+    private static int INDEX_SELECTED;
     /*
      * Method creates the initial state of the favourites activity
      */
@@ -95,6 +97,7 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
         });
 
         listview=findViewById(R.id.listview_favourites);
+        plantTitle = findViewById(R.id.plant_title);
         lightRequirementDetails=findViewById(R.id.light_requirements);
         waterRequirementDetails=findViewById(R.id.water_requirements);
         funFactsDetails=findViewById(R.id.fun_fact);
@@ -106,6 +109,8 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
         
         createFavouritesList();
     }
+
+
     /*
      * Method creates a list view of favourite plants by opening 
      * the hashset of favourite plant names indices.
@@ -140,8 +145,23 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
                 Log.v(TAG, "Position: "+position);
                 Log.v(TAG, "index: "+ index);
                 onPlantSelected(index);
+                INDEX_SELECTED = index;
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        Log.v(TAG,"onSaveInstanceState initialise" );
+        super.onSaveInstanceState(outState);
+        outState.putInt("index", INDEX_SELECTED);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        Log.v(TAG,"!!!onrestore!!! initialise" );
+        super.onRestoreInstanceState(savedInstanceState);
+             onPlantSelected(savedInstanceState.getInt("index"));
     }
    /*
     * Method makes the plant description of
@@ -151,6 +171,10 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
     public void onPlantSelected(int index) {
         indoorPlants.setVisibility(View.INVISIBLE);
         Log.v(TAG, "index passed:"+index);
+
+        String [] plantName = getResources().getStringArray(R.array.plants);
+        plantTitle.setText(plantName[index]);
+
         lightRequirement_txt.setText("Light Requirements");
         String [] lightRequirements= getResources().getStringArray(R.array.lightRequirements);
         lightRequirementDetails.setText(lightRequirements[index]);
@@ -167,5 +191,6 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
         plantImage.setImageDrawable(d);
 
     }
+
 
 }
