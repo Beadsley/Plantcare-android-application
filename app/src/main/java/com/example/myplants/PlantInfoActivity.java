@@ -11,6 +11,7 @@ package com.example.myplants;
  */
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -43,6 +44,7 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
     ImageView indoorPlants;
     private FloatingActionButton btnAddFavourite;
     private static int INDEX_SELECTED;
+    private DataBaseHelper db;
     /*
      * Method creates the initial state of the plant info activity
      */
@@ -50,7 +52,8 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_info);
-
+        db = new DataBaseHelper(this);
+        db.getWritableDatabase();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("Plant Information");
@@ -115,24 +118,31 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
     @Override
     public void onPlantSelected(int index) {
         indoorPlants.setVisibility(View.INVISIBLE);
+        Cursor select = db.getFilterData();
+        boolean m = select.moveToPosition(index);
+        int light_index = select.getColumnIndex("Light_requirements");
+        int water_index = select.getColumnIndex("Water_requirements");
+        int fun_index = select.getColumnIndex("Fun_fact");
+        int image_index = select.getColumnIndex("Image_Resources_ID");
+
+
+        lightRequirement_txt.setText("Light Requirements");
+
+        lightRequirementDetails.setText(select.getString(light_index));
+        waterRequirement_txt.setText("Water Requirements");
+        waterRequirementDetails.setText(select.getString(water_index));
+        funFacts_txt.setText("Fun Fact");
 
         String [] plantName = getResources().getStringArray(R.array.plants);
         plantTitle.setText(plantName[index]);
 
-        lightRequirement_txt.setText("Light Requirements");
-        String [] lightRequirements= getResources().getStringArray(R.array.lightRequirements);
-        lightRequirementDetails.setText(lightRequirements[index]);
+        funFactsDetails.setText(select.getString(fun_index));
 
-        waterRequirement_txt.setText("Water Requirements");
-        String [] waterRequirements= getResources().getStringArray(R.array.waterRequirements);
-        waterRequirementDetails.setText(waterRequirements[index]);
-
-        funFacts_txt.setText("Fun Fact");
-        String [] funFacts =getResources().getStringArray(R.array.funFacts);
-        funFactsDetails.setText(funFacts[index]);
-
-        Drawable d=getResources().obtainTypedArray(R.array.plantimages).getDrawable(index);
+        int imageID = select.getInt(image_index);
+        Drawable d = getResources().getDrawable(imageID);
         plantImage.setImageDrawable(d);
+
+
 
         btnAddFavourite.show();
         final int favIndex = index;
