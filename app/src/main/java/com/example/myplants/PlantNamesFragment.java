@@ -1,5 +1,12 @@
 package com.example.myplants;
-
+/**
+ *
+ * Fragment of the plant names, which is visible
+ * within the favourite and plan info activities
+ * @author Anastasija Gurejeva
+ * @author Daniel Beadleson
+ * @author Mahlet Mulu
+ */
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,10 +19,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class PlantNamesFragment extends ListFragment {
     private PlantListener plantListener;
 

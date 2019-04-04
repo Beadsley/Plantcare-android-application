@@ -1,5 +1,14 @@
 package com.example.myplants;
-
+/**
+ *
+ * Class Creates a list view of
+ *  plant names that will show
+ * the plant description on selection
+ *
+ * @author Anastasija Gurejeva
+ * @author Daniel Beadleson
+ * @author Mahlet Mulu
+ */
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
@@ -17,7 +26,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,8 +42,9 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
     ImageView plantImage;
     ImageView indoorPlants;
     private FloatingActionButton btnAddFavourite;
-
-
+    /*
+     * Method creates the initial state of the plant info activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +57,10 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
-
+        /*
+         * Method creates a pathway to the other
+         * activities via a navigation bar
+         */
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         Menu menu = navigation.getMenu();
         MenuItem menuItem =menu.getItem(1);
@@ -79,7 +91,6 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
             }
         });
 
-
         plantTitle = findViewById(R.id.plant_title);
         lightRequirementDetails = findViewById(R.id.light_requirements);
         waterRequirementDetails = findViewById(R.id.water_requirements);
@@ -92,13 +103,15 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
         plantImage = findViewById(R.id.plant_image);
         indoorPlants = findViewById(R.id.indoorPlants);
 
-
         btnAddFavourite = (FloatingActionButton) findViewById(R.id.btnAddFavourite);
         btnAddFavourite.hide();
 
     }
 
-    // method sets a description to the 'plantDetails Textview' when a plant is selected
+    /*
+     * Method makes the plant description of
+     * the selected plant visible
+     */
     @Override
     public void onPlantSelected(int index) {
         indoorPlants.setVisibility(View.INVISIBLE);
@@ -118,34 +131,33 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
         String [] funFacts =getResources().getStringArray(R.array.funFacts);
         funFactsDetails.setText(funFacts[index]);
 
-
-
         Drawable d=getResources().obtainTypedArray(R.array.plantimages).getDrawable(index);
         plantImage.setImageDrawable(d);
 
         btnAddFavourite.show();
         final int favIndex = index;
-
+        onFavButtonSelected(favIndex);
+    }
+    /*
+     * Method adds the favourite plant index to
+     * a hashset that is saved within the
+     * SharedPreferences
+     */
+    public void onFavButtonSelected(final int index){
         btnAddFavourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: favourite button pressed");
                 Toast.makeText(PlantInfoActivity.this, "Plant added to your favourites", Toast.LENGTH_LONG).show();
 
-                //initialise set
                 Set<String> favouriteSet = new HashSet<String>();
 
-                // open Hashset
                 SharedPreferences settingsopen = getSharedPreferences("fav_id", 0);
                 favouriteSet= settingsopen.getStringSet("favourites",new HashSet<String>());
-
-                //boolean notification = settings.getBoolean("notification_switchkey", false);
-
-                // save HashSet
                 SharedPreferences settings = getSharedPreferences("fav_id", 0);
                 SharedPreferences.Editor editor = settings.edit();
 
-                favouriteSet.add(""+favIndex);
+                favouriteSet.add(""+index);
 
                 Log.v(TAG, ""+favouriteSet);
 
@@ -154,7 +166,6 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
                 editor.commit();
             }
         });
-
     }
 
 }
