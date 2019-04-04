@@ -6,12 +6,12 @@
         android:id="@+id/mnuHome"
         android:title="@string/home" />
     <item
+        android:id="@+id/mnuPlantInfo"
+        android:title="@string/mnu_plant_info" />
+    <item
         android:id="@+id/mnuFavourites"
         android:title="@string/mnu_favourites" />
     <item
         android:id="@+id/mnuReminder"
         android:title="@string/mnu_reminders" />
-    <item
-        android:id="@+id/mnuPlantInfo"
-        android:title="@string/mnu_plant_info" />
 </menu>

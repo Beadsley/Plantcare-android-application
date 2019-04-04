@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:elevation="4dp"
-    app:titleTextColor="@color/colorPrimary"
-    app:subtitleTextColor="@color/colorPrimary"
     android:theme="@style/CustomToolBar"
-    app:popupTheme="@style/PopupStyle">
+    app:popupTheme="@style/PopupStyle"
+    app:subtitleTextColor="@color/colorPrimary"
+    app:titleTextColor="@color/colorAccent">
 
 </android.support.v7.widget.Toolbar>

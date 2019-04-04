@@ -13,12 +13,14 @@
         android:id="@+id/indoorPlants"
         android:layout_width="270dp"
         android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="30dp"
-        android:scaleType="fitCenter"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
         android:visibility="visible"
-        app:srcCompat="@drawable/indoor_plants" />
+        app:srcCompat="@drawable/plant_info_homepage" />
 
     <fragment
         android:id="@+id/fragment4"
