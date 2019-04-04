@@ -24,6 +24,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 public class MainActivity extends OptionsMenuActivity {
     private static  final String TAG= "MyPlantAPP";
@@ -38,14 +39,19 @@ public class MainActivity extends OptionsMenuActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ImageView logo = findViewById(R.id.logo);
+        logo.setVisibility(View.VISIBLE);
         setSupportActionBar(toolbar);
-        setTitle("Your Plant Care");
+        setTitle("");
 
         /*
          * Method creates a pathway to the other
          * activities via a navigation bar
          */
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        Menu menu = navigation.getMenu();
+        MenuItem menuItem =menu.getItem(0);
+        menuItem.setChecked(true);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -53,20 +59,19 @@ public class MainActivity extends OptionsMenuActivity {
 
                 switch (id) {
                     case R.id.nav_home:
-                        Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                        startActivity(intent);
+
                         break;
                     case R.id.nav_plantinfo:
-                        intent = new Intent(MainActivity.this, PlantInfoActivity.class);
-                        startActivity(intent);
+                        Intent intent1 = new Intent(MainActivity.this, PlantInfoActivity.class);
+                        startActivity(intent1);
                         break;
                     case R.id.nav_favourites:
-                        intent = new Intent(MainActivity.this, FavouritesActivity.class);
-                        startActivity(intent);
+                        Intent intent2 = new Intent(MainActivity.this, FavouritesActivity.class);
+                        startActivity(intent2);
                         break;
                     case R.id.nav_settings:
-                        intent = new Intent(MainActivity.this, SettingsActivity.class);
-                        startActivity(intent);
+                        Intent intent3 = new Intent(MainActivity.this, SettingsActivity.class);
+                        startActivity(intent3);
                         break;
                 }
                 return false;

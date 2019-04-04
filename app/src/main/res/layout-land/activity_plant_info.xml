@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlantInfoActivity"
+    android:orientation="vertical">
+    <include
+        layout="@layout/tool_bar"/>
+
+
+    <ImageView
+        android:id="@+id/indoorPlants"
+        android:layout_width="450dp"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        android:visibility="visible"
+        app:srcCompat="@drawable/plant_info_landscape" />
+
+    <fragment
+        android:id="@+id/fragment4"
+        android:name="com.example.myplants.ImageFragment"
+        android:layout_width="155dp"
+        android:layout_height="155dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="90dp"
+        tools:layout="@layout/fragment_image"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnAddFavourite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:src="@drawable/icon_favourite_white"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_below="@id/toolbar">
+
+        <fragment
+            android:id="@+id/fragment"
+            android:name="com.example.myplants.PlantNamesFragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            tools:layout="@layout/fragment_plant_names"/>
+
+        <fragment
+            android:id="@+id/fragment2"
+            android:name="com.example.myplants.PlantDescriptionsFragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="150dp"
+            android:layout_weight="5"
+            tools:layout="@layout/fragment_plant_descriptions"/>
+
+    </LinearLayout>
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_button"
+        app:itemIconTint="@drawable/bottom_nav_colours"
+        app:itemTextColor="@color/colorAccent"
+        app:menu="@menu/bottom_menu">
+    </android.support.design.widget.BottomNavigationView>
+</RelativeLayout>
