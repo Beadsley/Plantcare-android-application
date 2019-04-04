@@ -14,7 +14,7 @@
 
     <Switch
         android:id="@+id/switch_notifications"
-        android:layout_width="330dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@id/toolbar"
         android:layout_marginStart="16dp"
@@ -35,7 +35,7 @@
 
     <Switch
         android:id="@+id/switch_clear_favourites"
-        android:layout_width="330dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@id/switch_notifications"
         android:layout_marginStart="16dp"
@@ -69,7 +69,7 @@
 
     <Button
         android:id="@+id/btn_refresh"
-        android:layout_width="330dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@id/switch_clear_favourites"
         android:layout_marginStart="16dp"
