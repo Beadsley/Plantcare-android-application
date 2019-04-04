@@ -1,5 +1,6 @@
 package com.example.myplants;
 /**
+ *
  * Main class
  *
  * Creates a main menu which interacts

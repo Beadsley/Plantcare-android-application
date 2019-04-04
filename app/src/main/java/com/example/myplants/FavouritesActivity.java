@@ -157,7 +157,7 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
         funFacts_txt.setText("Fun Fact");
         String [] funFacts =getResources().getStringArray(R.array.funFacts);
         funFactsDetails.setText(funFacts[index]);
-        
+
         Drawable d=getResources().obtainTypedArray(R.array.plantimages).getDrawable(index);
         plantImage.setImageDrawable(d);
 
