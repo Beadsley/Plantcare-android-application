@@ -17,6 +17,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 public class PlantInfoActivity extends OptionsMenuActivity implements PlantNamesFragment.PlantListener {
     private static final String TAG= "PlantInfo";
@@ -125,9 +128,27 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
             public void onClick(View v) {
                 Log.d(TAG, "onClick: favourite button pressed");
                 Toast.makeText(PlantInfoActivity.this, "Plant added to your favourites", Toast.LENGTH_LONG).show();
-                int[] favourites = getResources().getIntArray(R.array.favourites);
-                    favourites [favourites.length-1] = favIndex;
-                    Log.v(TAG,"favourites"+favourites );
+
+                //initialise set
+                Set<String> favouriteSet = new HashSet<String>();
+
+                // open Hashset
+                SharedPreferences settingsopen = getSharedPreferences("fav_id", 0);
+                favouriteSet= settingsopen.getStringSet("favourites",new HashSet<String>());
+
+                //boolean notification = settings.getBoolean("notification_switchkey", false);
+
+                // save HashSet
+                SharedPreferences settings = getSharedPreferences("fav_id", 0);
+                SharedPreferences.Editor editor = settings.edit();
+
+                favouriteSet.add(""+favIndex);
+
+                Log.v(TAG, ""+favouriteSet);
+
+                editor.clear();
+                editor.putStringSet("favourites",favouriteSet);
+                editor.commit();
             }
         });
 

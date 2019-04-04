@@ -30,6 +30,8 @@ import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SettingsActivity extends OptionsMenuActivity implements TimePickerDialog.OnTimeSetListener {
     private static final String TAG= "PlantSettings";
@@ -139,7 +141,16 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
                     Log.v(TAG, "clear all checked");
-                    getResources().getIntArray(R.array.favourites);
+
+                    // save HashSet
+                    SharedPreferences settings = getSharedPreferences("fav_id", 0);
+                    SharedPreferences.Editor editor = settings.edit();
+
+                    editor.clear();
+
+                    editor.commit();
+                    Toast.makeText(SettingsActivity.this, "All Favourites removed", Toast.LENGTH_SHORT).show();
+
                 }
                 else {
                     Log.v(TAG, "clear all not checked");
