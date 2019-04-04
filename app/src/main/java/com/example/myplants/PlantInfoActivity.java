@@ -29,7 +29,7 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
     TextView lightRequirement_txt;
     TextView waterRequirement_txt;
     TextView funFacts_txt;
-    TextView hint_txt;
+    TextView plantTitle;
     ImageView plantImage;
     ImageView indoorPlants;
     private FloatingActionButton btnAddFavourite;
@@ -43,8 +43,10 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("Plant Information");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -74,6 +76,8 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
             }
         });
 
+
+        plantTitle = findViewById(R.id.plant_title);
         lightRequirementDetails = findViewById(R.id.light_requirements);
         waterRequirementDetails = findViewById(R.id.water_requirements);
         funFactsDetails = findViewById(R.id.fun_fact);
@@ -95,6 +99,9 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
     @Override
     public void onPlantSelected(int index) {
         indoorPlants.setVisibility(View.INVISIBLE);
+
+        String [] plantName = getResources().getStringArray(R.array.plants);
+        plantTitle.setText(plantName[index]);
 
         lightRequirement_txt.setText("Light Requirements");
         String [] lightRequirements= getResources().getStringArray(R.array.lightRequirements);

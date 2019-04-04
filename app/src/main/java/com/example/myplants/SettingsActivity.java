@@ -7,11 +7,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.PersistableBundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -41,6 +45,43 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
         Log.v(TAG,"onCreate initialised");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("Settings");
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+
+                switch (id) {
+                    case R.id.nav_home:
+                        Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.nav_plantinfo:
+                        intent = new Intent(SettingsActivity.this, PlantInfoActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.nav_favourites:
+                        intent = new Intent(SettingsActivity.this, FavouritesActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.nav_settings:
+                        intent = new Intent(SettingsActivity.this, SettingsActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+                return false;
+            }
+        });
 
 
         clearAllSwitch= findViewById(R.id.switch_clear_favourites);
@@ -169,12 +210,6 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
         Toast.makeText(this, "Reminder Cancelled", Toast.LENGTH_SHORT).show();
     }
 
-    public void onGoBack(View view) {
-        clearAllSwitch.setChecked(false);
-        Intent intent =new Intent(this, MainActivity.class);
-        startActivity(intent);
-        onPause();
-    }
 
     public void onRefresh(View view) {
         notificationsSwitch.setChecked(false);

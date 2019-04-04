@@ -2,9 +2,9 @@
     <string name="app_name">My Indoor Plants</string>
     <string name="plant_information_btn">Plant Information</string>
     <string name="btn_go_back">Go Back</string>
-    <string name="btn_plant_info_text"><font size="20">Plant Information</font></string>
-    <string name="btn_favourite_text"><font size="20">Favourites</font></string>
-    <string name="btn_funfacts_text"><font size="20">Settings</font></string>
+    <string name="btn_plant_info_text">Plant Information</string>
+    <string name="btn_favourite_text">Favourites</string>
+    <string name="btn_funfacts_text">Settings</string>
     <string name="light_requirements_txt">Light Requirements:</string>
     <string name="water_requirements_txt">Water Requirements:</string>
     <string name="plant_info_hint_txt">Select a plant from the list</string>
@@ -13,7 +13,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="switch_reminder_txt">Set Daily Reminder</string>
-    <string name="mnu_reminders">Reminders</string>
+    <string name="refresh_txt">Refresh Settings</string>
+    <string name="mnu_reminders">Settings</string>
     <string name="home">Home</string>
     <string name="mnu_favourites">Favourites</string>
     <string name="mnu_plant_info">Plant Info</string>

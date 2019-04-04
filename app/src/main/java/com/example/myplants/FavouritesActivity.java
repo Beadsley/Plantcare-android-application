@@ -50,6 +50,10 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 
 
+
+        MenuItem selectedItem = (MenuItem) findViewById(R.id.nav_favourites);
+
+
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

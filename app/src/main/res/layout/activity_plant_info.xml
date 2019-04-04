@@ -14,12 +14,14 @@
         android:id="@+id/indoorPlants"
         android:layout_width="270dp"
         android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation"
         android:layout_alignParentRight="true"
-        android:layout_alignBottom="@id/bottom_navigation"
-        android:layout_marginTop="30dp"
-        android:scaleType="fitCenter"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
         android:visibility="visible"
-        app:srcCompat="@drawable/indoor_plants" />
+        app:srcCompat="@drawable/plant_info_homepage" />
 
     <fragment
         android:id="@+id/fragment4"
@@ -28,8 +30,8 @@
         android:layout_height="200dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="60dp"
         tools:layout="@layout/fragment_image"/>
 
     <android.support.design.widget.FloatingActionButton
@@ -37,9 +39,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/bottom_navigation"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:clickable="true"
-        android:src="@drawable/icon_favourite"
+        android:src="@drawable/icon_favourite_white"
+        android:backgroundTint="@color/colorAccent"
         android:layout_alignParentRight="true"
         android:layout_marginRight="30dp" />
 
