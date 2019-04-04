@@ -1,4 +1,4 @@
-PlantcareAndroidApplication
+Plantcare Android Application
 ====================================
 Application allows users to view a list of plants, and on selection 
 view characteristics associated with that plant. Plants can be added to a 
