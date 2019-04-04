@@ -1,5 +1,15 @@
 package com.example.myplants;
-
+/**
+ *
+ * Class Creates a list view of
+ * favourite plant names
+ * that will show the plant description 
+ * on selection
+ *
+ * @author Anastasija Gurejeva
+ * @author Daniel Beadleson
+ * @author Mahlet Mulu
+ */
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
@@ -31,11 +41,11 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
     TextView lightRequirement_txt;
     TextView waterRequirement_txt;
     TextView funFacts_txt;
-    TextView hint_txt;
     ImageView plantImage;
     ImageView indoorPlants;
-    int[] favourites;
-
+    /*
+     * Method creates the initial state of the favourites activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,14 +56,12 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
         setTitle("Favourites");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+ 
+        /*
+         * Method creates a pathway to the other
+         * activities via a navigation bar
+         */
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-
-
-
-        MenuItem selectedItem = (MenuItem) findViewById(R.id.nav_favourites);
-
-
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -82,39 +90,42 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
         });
 
         listview=findViewById(R.id.listview_favourites);
-
         lightRequirementDetails=findViewById(R.id.light_requirements);
         waterRequirementDetails=findViewById(R.id.water_requirements);
         funFactsDetails=findViewById(R.id.fun_fact);
-
         lightRequirement_txt=findViewById(R.id.light_requirements_txt);
         waterRequirement_txt=findViewById(R.id.water_requirements_txt);
         funFacts_txt=findViewById(R.id.fun_facts_txt);
-
         plantImage=findViewById(R.id.plant_image);
         indoorPlants=findViewById(R.id.indoorPlants);
-
-        //open hashset of names
+        
+        createFavouritesList();
+    }
+    /*
+     * Method creates a list view of favourite plants by opening 
+     * the hashset of favourite plant names indices.
+     * the plant description is visible upon selection.
+     */
+    public void createFavouritesList(){
         Set<String> favouriteSet = new HashSet<String>();
         SharedPreferences settingsopen = getSharedPreferences("fav_id", 0);
         favouriteSet= settingsopen.getStringSet("favourites",new HashSet<String>());
         Log.v(TAG, "favourites from set: "+favouriteSet);
 
-        //check if list is empty
-        ArrayList<String> favouritesNames2= new ArrayList<>();
+        ArrayList<String> favouritesNames= new ArrayList<>();
         final ArrayList<Integer> favouriteIndices= new ArrayList<>();
         for (String s: favouriteSet){
             int index= Integer.parseInt(s);
             Log.v(TAG, "indices from set: "+index);
-            favouritesNames2.add((getResources().getStringArray(R.array.plants))[index]);
+            favouritesNames.add((getResources().getStringArray(R.array.plants))[index]);
             favouriteIndices.add(index);
         }
-        Log.v(TAG, "names from set: " +favouritesNames2);
+        Log.v(TAG, "names from set: " +favouritesNames);
         Log.v(TAG, "indices from list"+ favouriteIndices);
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_expandable_list_item_1,
-                favouritesNames2);
+                favouritesNames);
 
         listview.setAdapter(adapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -127,8 +138,10 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
             }
         });
     }
-
-    // method sets a description to the 'plantDetails Textview' when a plant is selected
+   /*
+    * Method makes the plant description of
+    * the selected plant visible
+    */
     @Override
     public void onPlantSelected(int index) {
         indoorPlants.setVisibility(View.INVISIBLE);
@@ -145,14 +158,9 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
         String [] funFacts =getResources().getStringArray(R.array.funFacts);
         funFactsDetails.setText(funFacts[index]);
 
-
         Drawable d=getResources().obtainTypedArray(R.array.plantimages).getDrawable(index);
         plantImage.setImageDrawable(d);
 
     }
-    public void onGoBack(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
+
 }

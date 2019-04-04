@@ -1,5 +1,16 @@
 package com.example.myplants;
-
+/**
+ *
+ * Class Creates a settings activity
+ * allowing the user to set an alarm
+ * that will notify the user every day at
+ * a specified time. The user will also
+ * be able to clear all favourites
+ *
+ * @author Anastasija Gurejeva
+ * @author Daniel Beadleson
+ * @author Mahlet Mulu
+ */
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
@@ -39,6 +50,11 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
     Switch clearAllSwitch;
     ListView listview;
     String [] plantNames;
+    boolean reminderSet;
+    boolean clearAll;
+    /*
+     * Method creates the initial state of the settings activity
+     */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 
@@ -54,7 +70,10 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-
+        /*
+         * Method creates a pathway to the other
+         * activities via a navigation bar
+         */
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -84,89 +103,92 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
             }
         });
 
-
         clearAllSwitch= findViewById(R.id.switch_clear_favourites);
         notificationsSwitch= findViewById(R.id.switch_notifications);
         listview=findViewById(R.id.listview_favourites);
 
-        // create a listview of plant names
-        plantNames =getResources().getStringArray(R.array.plants);
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,plantNames);
-        listview.setAdapter(adapter);        
+        switchBarPreviousStates();
 
-        // finding the state of the switch bars
-        SharedPreferences settings = getSharedPreferences("switch_state_id", 0);
-        boolean notification = settings.getBoolean("notification_switchkey", false);
-        boolean clearAll = settings.getBoolean("clearAll_switchkey", false);
-
-        notificationsSwitch.setChecked(notification);
-        clearAllSwitch.setChecked(clearAll);
-
-        //set state alarm txt
-        Log.v(TAG, "reminder :"+notification);
-        if (notification){
-            SharedPreferences remindSettings=getSharedPreferences("reminder_id",0);
-            String alarmText=remindSettings.getString("alarm", "Set Daily Reminder");
-            notificationsSwitch.setText(alarmText);
-        }
-
-        // when the reminder switch is intilialised
         notificationsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView,
                                          boolean isChecked) {
 
                 if (isChecked){
-                    //set reminder
                     DialogFragment timePicker = new TimePickerFragment();
                     timePicker.show(getSupportFragmentManager(), "time picker");
-
                 }
                 else{
                     notificationsSwitch.setText("Set Daily Reminder");
                     cancelAlarm();
                 }
-                // Set the state of the switch bar
-                SharedPreferences settings = getSharedPreferences("switch_state_id", 0);
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putBoolean("notification_switchkey", isChecked);
-                editor.commit();
-
+                storeNotificationsSwitchState(isChecked);
             }
         });
 
-        //when the clear all is initialised
         clearAllSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked){
                     Log.v(TAG, "clear all checked");
-
-                    // save HashSet
-                    SharedPreferences settings = getSharedPreferences("fav_id", 0);
-                    SharedPreferences.Editor editor = settings.edit();
-
-                    editor.clear();
-
-                    editor.commit();
-                    Toast.makeText(SettingsActivity.this, "All Favourites removed", Toast.LENGTH_SHORT).show();
-
+                    clearFavHashSet();
                 }
                 else {
                     Log.v(TAG, "clear all not checked");
                 }
-
-                // Set the state of the switch bar
-                SharedPreferences settings = getSharedPreferences("switch_state_id", 0);
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putBoolean("clearAll_switchkey", isChecked);
-                editor.commit();
+                storeClearAllSwitchState(isChecked);
             }
         });
+    }
+    /*
+     * Method sets the state of the switch bars to
+     * their original state
+     */
+    public void switchBarPreviousStates(){
+        SharedPreferences settings = getSharedPreferences("switch_state_id", 0);
+        reminderSet = settings.getBoolean("notification_switchkey", false);
+        clearAll = settings.getBoolean("clearAll_switchkey", false);
+        notificationsSwitch.setChecked(reminderSet);
+        clearAllSwitch.setChecked(clearAll);
+        Log.v(TAG, "reminder :"+reminderSet);
 
+        if (reminderSet){
+            SharedPreferences remindSettings=getSharedPreferences("reminder_id",0);
+            String alarmText=remindSettings.getString("alarm", "Set Daily Reminder");
+            notificationsSwitch.setText(alarmText);
+        }
+    }
+    /*
+     * Method stores the state of the notification switch bar
+     */
+    public void storeNotificationsSwitchState(Boolean isChecked){
+        SharedPreferences settings = getSharedPreferences("switch_state_id", 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("notification_switchkey", isChecked);
+        editor.commit();
+    }
+    /*
+     * Method stores the state of the clear all switch bar
+     */
+    public void storeClearAllSwitchState(Boolean isChecked){
+        SharedPreferences settings = getSharedPreferences("switch_state_id", 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("clearAll_switchkey", isChecked);
+        editor.commit();
     }
 
+    /*
+     * Method clears the hashset of favourite plant
+     * indices and stores that new state of the
+     * hashset
+     */
+    public void clearFavHashSet(){
+        SharedPreferences settings = getSharedPreferences("fav_id", 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.clear();
+        editor.commit();
+        Toast.makeText(SettingsActivity.this, "All Favourites removed", Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -176,42 +198,53 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
         calendar.set(Calendar.MINUTE, minute);
         calendar.set(Calendar.SECOND, 0);
 
-        //Seperate Method ?
         String timeText = "Alarm set for: ";
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar.getTime());
         Toast.makeText(this, timeText, Toast.LENGTH_SHORT).show();
-        //save timeText
+        storeAlarmTime(timeText);
+        notificationsSwitch.setText(timeText);
+
+        startAlarm(calendar);
+    }
+
+    /*
+     * Stores the time in which the
+     * alarm is set by the user
+     */
+    public void storeAlarmTime(String timeText){
         SharedPreferences settings = getSharedPreferences("reminder_id", 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("alarm", timeText);
         editor.commit();
-
-        //set txt
-        notificationsSwitch.setText(timeText);
-
-        startAlarm(calendar);
-
     }
 
+    /*
+     * Method initialises the alarm
+     */
     private void startAlarm(Calendar calendar){
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
-
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 
     }
 
+    /*
+     * Method cancels the alarm when the
+     * switch is turned off
+     */
     private void cancelAlarm() {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
-
         alarmManager.cancel(pendingIntent);
         Toast.makeText(this, "Reminder Cancelled", Toast.LENGTH_SHORT).show();
     }
 
-
+    /*
+     * Method sets all the switch bars
+     * to not checked
+     */
     public void onRefresh(View view) {
         notificationsSwitch.setChecked(false);
         clearAllSwitch.setChecked(false);

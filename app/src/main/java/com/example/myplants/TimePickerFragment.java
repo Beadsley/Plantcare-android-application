@@ -1,5 +1,13 @@
 package com.example.myplants;
-
+/**
+ *
+ * Fragment allows the user to pick
+ * a time for the notification
+ *
+ * @author Anastasija Gurejeva
+ * @author Daniel Beadleson
+ * @author Mahlet Mulu
+ */
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;

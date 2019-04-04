@@ -1,4 +1,16 @@
 package com.example.myplants;
+/**
+ *
+ * Main class
+ *
+ * Creates a main menu which interacts
+ * with a Plant Information,
+ * Settings and Favourites
+ *
+ * @author Anastasija Gurejeva
+ * @author Daniel Beadleson
+ * @author Mahlet Mulu
+ */
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,17 +28,23 @@ import android.view.View;
 public class MainActivity extends OptionsMenuActivity {
     private static  final String TAG= "MyPlantAPP";
 
-
+    /*
+     * Method initialises the main menu view
+     * that includes a toolbar
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("Your Plant Care");
 
-
-
+        /*
+         * Method creates a pathway to the other
+         * activities via a navigation bar
+         */
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -56,26 +74,30 @@ public class MainActivity extends OptionsMenuActivity {
         });
     }
 
-
-
-    //method sends the user to the plant info activity
-
-
+   /*
+    * Method sends the user to Plant Info
+    * after selecting the respective button
+    */
     public void onPlantInfo(View view) {
         Intent intent= new Intent(this, PlantInfoActivity.class);
         startActivity(intent);
-       // finish();
     }
 
+    /*
+     * Method sends the user to Favourites
+     * after selecting the respective button
+     */
     public void onClickFavourites(View view) {
         Intent intent = new Intent(this, FavouritesActivity.class);
         startActivity(intent);
-        //finish();
     }
 
+    /*
+     * Method sends the user to Settings
+     * after selecting the respective button
+     */
     public void onClickSettings(View view) {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
-        //finish();
     }
 }
