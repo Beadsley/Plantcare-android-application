@@ -1,120 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-
+    tools:context=".MainActivity"
+    android:orientation="vertical">
     <include
-        android:id="@+id/include"
         layout="@layout/tool_bar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/toolbar"
+        />
 
     <Button
         android:id="@+id/btn_plant_info"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_below="@id/toolbar"
         android:background="@drawable/border_button"
         android:drawableLeft="@drawable/icon_arrow"
         android:drawableRight="@drawable/icon_flower"
         android:drawablePadding="20dp"
+        android:fontFamily="sans-serif-light"
         android:gravity="left|center_vertical"
         android:onClick="onPlantInfo"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:shadowColor="@color/colorPrimary"
         android:text="@string/btn_plant_info_text"
-        android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
-        android:typeface="sans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textIsSelectable="false"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/btn_favourites"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_below="@id/btn_plant_info"
         android:background="@drawable/border_button"
         android:drawableLeft="@drawable/icon_arrow"
         android:drawableRight="@drawable/icon_favourite"
         android:drawablePadding="20dp"
+        android:fontFamily="sans-serif-light"
         android:gravity="left|center_vertical"
         android:onClick="onClickFavourites"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="@string/btn_favourite_text"
-        android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
-        android:typeface="sans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_plant_info" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textIsSelectable="false"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/btn_settings"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_below="@id/btn_favourites"
         android:background="@drawable/border_button"
         android:drawableLeft="@drawable/icon_arrow"
         android:drawableRight="@drawable/icon_settings"
         android:drawablePadding="20dp"
+        android:fontFamily="sans-serif-light"
         android:gravity="left|center_vertical"
         android:onClick="onClickSettings"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="@string/btn_funfacts_text"
-        android:textAllCaps="false"
-        android:textColor="@color/colorPrimary"
-        android:typeface="sans"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_favourites" />
-
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/image_hand_with_plant"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_settings"
-        app:layout_constraintVertical_bias="0.538" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textIsSelectable="false"
+        android:textSize="16sp" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/border_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:itemIconTint="@drawable/bottom_nav_colours"
         app:itemTextColor="@color/colorAccent"
-        app:menu="@menu/bottom_menu">
+        app:menu="@menu/bottom_menu"></android.support.design.widget.BottomNavigationView>
 
-    </android.support.design.widget.BottomNavigationView>
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="30dp"
+        android:layout_below="@id/btn_settings"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_marginBottom="30dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/home_image" />
+
+</RelativeLayout>
