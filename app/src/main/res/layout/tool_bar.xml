@@ -10,4 +10,14 @@
     app:subtitleTextColor="@color/colorPrimary"
     app:titleTextColor="@color/colorAccent">
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:src="@drawable/logo_plant_care"
+        android:visibility="invisible"/>
+
 </android.support.v7.widget.Toolbar>

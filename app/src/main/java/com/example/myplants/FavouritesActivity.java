@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -48,10 +49,9 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-
-
-
-        MenuItem selectedItem = (MenuItem) findViewById(R.id.nav_favourites);
+        Menu menu = navigation.getMenu();
+        MenuItem menuItem =menu.getItem(2);
+        menuItem.setChecked(true);
 
 
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -61,20 +61,19 @@ public class FavouritesActivity extends OptionsMenuActivity implements PlantName
 
                 switch (id) {
                     case R.id.nav_home:
-                        Intent intent = new Intent(FavouritesActivity.this, MainActivity.class);
-                        startActivity(intent);
+                        Intent intent0 = new Intent(FavouritesActivity.this, MainActivity.class);
+                        startActivity(intent0);
                         break;
                     case R.id.nav_plantinfo:
-                        intent = new Intent(FavouritesActivity.this, PlantInfoActivity.class);
-                        startActivity(intent);
+                        Intent intent1 = new Intent(FavouritesActivity.this, PlantInfoActivity.class);
+                        startActivity(intent1);
                         break;
                     case R.id.nav_favourites:
-                        intent = new Intent(FavouritesActivity.this, FavouritesActivity.class);
-                        startActivity(intent);
+
                         break;
                     case R.id.nav_settings:
-                        intent = new Intent(FavouritesActivity.this, SettingsActivity.class);
-                        startActivity(intent);
+                        Intent intent3 = new Intent(FavouritesActivity.this, SettingsActivity.class);
+                        startActivity(intent3);
                         break;
                 }
                 return false;
