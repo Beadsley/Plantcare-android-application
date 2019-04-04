@@ -60,6 +60,7 @@ public class SettingsActivity extends OptionsMenuActivity implements TimePickerD
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
+                clearAllSwitch.setChecked(false);
 
                 switch (id) {
                     case R.id.nav_home:
