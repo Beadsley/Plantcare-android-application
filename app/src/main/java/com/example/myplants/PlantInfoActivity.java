@@ -42,6 +42,7 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
     ImageView plantImage;
     ImageView indoorPlants;
     private FloatingActionButton btnAddFavourite;
+    private static int INDEX_SELECTED;
     /*
      * Method creates the initial state of the plant info activity
      */
@@ -105,7 +106,6 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
 
         btnAddFavourite = (FloatingActionButton) findViewById(R.id.btnAddFavourite);
         btnAddFavourite.hide();
-
     }
 
     /*
@@ -136,8 +136,24 @@ public class PlantInfoActivity extends OptionsMenuActivity implements PlantNames
 
         btnAddFavourite.show();
         final int favIndex = index;
+        INDEX_SELECTED = index;
         onFavButtonSelected(favIndex);
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        Log.v(TAG,"onSaveInstanceState initialise" );
+        super.onSaveInstanceState(outState);
+        outState.putInt("index", INDEX_SELECTED);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        Log.v(TAG,"!!!onrestore!!! initialise" );
+        super.onRestoreInstanceState(savedInstanceState);
+        onPlantSelected(savedInstanceState.getInt("index"));
+    }
+    
     /*
      * Method adds the favourite plant index to
      * a hashset that is saved within the

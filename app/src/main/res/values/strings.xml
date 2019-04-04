@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Indoor Plants</string>
+    <string name="app_name">Plant Care</string>
     <string name="plant_information_btn">Plant Information</string>
     <string name="btn_go_back">Go Back</string>
     <string name="btn_plant_info_text">Plant Information</string>
