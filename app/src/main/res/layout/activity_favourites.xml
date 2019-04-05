@@ -28,9 +28,9 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="100dp"
         tools:layout="@layout/fragment_image"/>
 
     <LinearLayout
@@ -50,9 +50,9 @@
             android:name="com.example.myplants.PlantDescriptionsFragment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="200dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_weight="5"
             tools:layout="@layout/fragment_plant_descriptions"/>
     </LinearLayout>
